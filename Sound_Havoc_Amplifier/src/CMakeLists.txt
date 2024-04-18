@@ -1,4 +1,4 @@
-set(PRJ_NAME "Sound_Havoc_Amplifier")
+set(PRJ_NAME "sound_havoc_amp")
 project(${PRJ_NAME}_NoUI)
 
 set(PROJECT_BINARY_DIR "${PROJECT_BINARY_DIR}/../${PRJ_NAME}.lv2")
