@@ -114,7 +114,7 @@ static const void* extension_data(const char *uri) {
 
 static LV2_Descriptor const descriptor = {
 
-    "https://github.com/sudo-JACT/Sound_Havoc/tree/main/Sound_Havoc_Amplifier",
+    "https://github.com/sudo-JACT/Sound_Havoc/tree/main/Sound_Havoc_Amplifier/src",
     instantiate,
     connect_port,
     activate,
