@@ -5,7 +5,7 @@
 
 Sound_Havoc_Amplifier is a lv2:Plugin, lv2:Plugin , lv2:AmplifierPlugin , doap:Project;
     lv2:binary <Sound_Havoc_Amplifier.so>;
-    doap:name "Sound_Havoc_Amplifier";
+    doap:name "Sound Havoc Amplifier";
     lv2:optionalFeature lv2:hardRTCapable;
 
     lv2:port [
