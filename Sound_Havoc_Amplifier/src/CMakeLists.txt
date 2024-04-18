@@ -5,7 +5,7 @@ set(PROJECT_BINARY_DIR "${PROJECT_BINARY_DIR}/../${PRJ_NAME}.lv2")
 
 set(SOURCE_FILES
     ${PRJ_NAME}.ttl
-    ${PRJ_NAME}.cpp
+    ${PRJ_NAME}.c
     manifest.ttl
 )
 add_library(${PROJECT_NAME} MODULE ${SOURCE_FILES})
