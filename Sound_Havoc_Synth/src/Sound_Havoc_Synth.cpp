@@ -4,8 +4,23 @@
 #include <cstdlib>
 #include <cmath>
 #include <lv2.h>
+#include <lv2/atom/atom.h>
+#include <lv2/atom/util.h>
+#include <lv2/urid/urid.h>
+#include <lv2/midi/midi.h>
+#include <lv2/core/lv2_util.h>
 
 #define u32 uint32_t
+
+enum ControlPorts {
+
+    CONTROL_ATTACK = 0,
+    CONTROL_DECAY = 1,
+    CONTROL_SUSTAIN = 2,
+    CONTROL_RELEASE = 3,
+    CONTROL_LEVEL = 4,
+    CONTROL_NR = 5,
+};
 
 /*struct definition*/
 
@@ -13,16 +28,22 @@ class Synth {
 
     private:
 
+        const LV2_Atom_Sequence* midi_in_ptr;
         float* audio_out_ptr;
         float* freq_ptr;
-        float* level_ptr;
+        /*const float* attack_ptr;
+        const float* decay_ptr;
+        const float* sustain_ptr;
+        const float* release_ptr;
+        const float* level_ptr;*/
+        const float* control_ptr[CONTROL_NR];
         double rate;
         double position;
 
 
     public:
 
-        Nois_Generator(const double sample_rate) {
+        Synth(const double sample_rate) {
 
             audio_out_ptr = (float*) nullptr;
             freq_ptr = (float *) nullptr;
@@ -32,7 +53,7 @@ class Synth {
 
         }
 
-        //-Nois_Generator(); i use the default c++ destructor
+        //-Synth(); i use the default c++ destructor
         
         void connectPort(const u32 port, void* data_location) {
 
@@ -90,7 +111,7 @@ class Synth {
 //const char *URI
 static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sample_rate, const char *bundle_path, const LV2_Feature *const *features) {
 
-    Nois_Generator* ng = new Nois_Generator(sample_rate);
+    Synth* ng = new Synth(sample_rate);
 
     return ng;
 
@@ -98,7 +119,7 @@ static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sa
 
 static void connect_port(LV2_Handle instance, uint32_t port, void *data_location) {
 
-    Nois_Generator* ng = (Nois_Generator*) instance;
+    Synth* ng = (Synth*) instance;
 
     if(!ng) {
 
@@ -113,7 +134,7 @@ static void connect_port(LV2_Handle instance, uint32_t port, void *data_location
 
 static void activate(LV2_Handle instance) {
 
-    Nois_Generator* ng = (Nois_Generator*) instance;
+    Synth* ng = (Synth*) instance;
 
     if (!ng) {
 
@@ -128,7 +149,7 @@ static void activate(LV2_Handle instance) {
 
 static void run(LV2_Handle instance, uint32_t sample_count) {
 
-    Nois_Generator* ng = (Nois_Generator*) instance;
+    Synth* ng = (Synth*) instance;
 
     if (!ng) {
 
@@ -148,7 +169,7 @@ static void deactivate(LV2_Handle instance) {
 
 static void cleanup(LV2_Handle instance) {
 
-    Nois_Generator *ng = (Nois_Generator *)instance;
+    Synth *ng = (Synth *)instance;
 
     if (!ng)
     {
