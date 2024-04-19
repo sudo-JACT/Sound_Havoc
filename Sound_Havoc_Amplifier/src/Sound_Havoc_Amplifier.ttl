@@ -7,6 +7,8 @@
     lv2:binary <Sound_Havoc_Amplifier.so>;
     doap:name "Sound Havoc Amplifier";
     lv2:optionalFeature lv2:hardRTCapable;
+    lv2:minorVersion 1;
+    lv2:microVersion 2;
 
     lv2:port [
 

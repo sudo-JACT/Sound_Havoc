@@ -1,6 +1,6 @@
 @prefix lv2:  <http://lv2plug.in/ns/lv2core#>.
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 
-<> a lv2:Plugin;
-    lv2:binary <Sound_Havoc_Amplifier.so>;
-    rdfs:seeAlso <Sound_Havoc_Amplifier.ttl>.
+<https://github.com/sudo-JACT/Sound_Havoc/tree/main/Sound_Havoc_Nois_Generator/src> a lv2:Plugin;
+    lv2:binary <Sound_Havoc_Nois_Generator.so>;
+    rdfs:seeAlso <Sound_Havoc_Nois_Generator.ttl>.
