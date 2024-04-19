@@ -11,6 +11,8 @@
     lv2:optionalFeature lv2:hardRTCapable;
     lv2:minorVersion 1;
     lv2:microVersion 0;
+    foaf:name "1md0nkey";
+    foaf:homepage <https://sudo-jact.github.io/>;
 
     lv2:port [
 
