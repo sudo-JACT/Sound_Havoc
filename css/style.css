@@ -1,10 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour&family=Workbench&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&family=Sixtyfour&family=Workbench&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Lines&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Broken+Fax&family=Rubik+Lines&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Rubik+Glitch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Rubik+Glitch&family=Rubik+Maze&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Extended+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+128+Text&family=Libre+Barcode+39+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Libre+Barcode+128+Text&family=Libre+Barcode+39+Text&display=swap');
+
+
 :root {
 
-    --text: #f8e2e4;
-    --background: #120405;
-    --primary: #e38e96;
-    --secondary: #807220;
-    --accent: #bfd555;
+    --text: #dbd3ca;
+    --background: #191818;
+    --primary: #6e6c65;
+    --secondary: #3f3e3d;
+    --accent: #6b6a67;
+    --formw: 100rem;
+    --formh: 50rem;
 
 }
 
@@ -12,5 +28,113 @@ body {
 
     background-color: var(--background);
     color: var(--text);
+
+}
+
+.sixtyfour {
+
+    font-family: "Sixtyfour", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "BLED" 0,
+        "SCAN" 0;
+
+}
+
+.workbench {
+    font-family: "Workbench", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+        "BLED" 0,
+        "SCAN" 0;
+}
+
+.protest-guerrilla-regular {
+
+    font-family: "Protest Guerrilla", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.rubik-lines-regular {
+    font-family: "Rubik Lines", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.rubik-broken-fax-regular {
+    font-family: "Rubik Broken Fax", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.rubik-glitch-regular {
+    font-family: "Rubik Glitch", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.aboreto-regular {
+    font-family: "Aboreto", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.rubik-maze-regular {
+    font-family: "Rubik Maze", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.libre-barcode-39-extended-text-regular {
+    font-family: "Libre Barcode 39 Extended Text", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.libre-barcode-39-text-regular {
+    font-family: "Libre Barcode 39 Text", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.libre-barcode-128-text-regular {
+    font-family: "Libre Barcode 128 Text", system-ui;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.allerta-stencil-regular {
+    font-family: "Allerta Stencil", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+iframe {
+
+    color: var(--text);
+
+}
+
+form {
+
+    background-color: var(--secondary);
+    border-radius: 2rem;
+    padding: 1rem;
+    text-align: center;
+    color: var(--text);
+
+    width: var(--formw);
+    height: var(--formh);
+    
+    position: fixed;
+    top: calc(50vh - calc(var(--formh)) / 2);
+    left: calc(50vw - calc(var(--formw) / 2));
+
+    overflow: auto;
 
 }
