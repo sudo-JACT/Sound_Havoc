@@ -26,7 +26,7 @@ enum IOPorts {
     IO_MIDI_IN = 0,
     IO_AUDIO_OUT = 1,
     IO_CONTROL = 2,
-    IO_NR = 3
+    IO_NR = 3,
 };
 
 struct Urids {
@@ -36,7 +36,7 @@ struct Urids {
 enum KeyStatus {
     KEY_OFF = 0,
     KEY_PRESSED = 1,
-    KEY_RELEASED = 2
+    KEY_RELEASED = 2,
 };
 
 struct Envelope {
