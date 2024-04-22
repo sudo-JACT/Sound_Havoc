@@ -312,7 +312,7 @@ class Synth {
 
                         case LV2_MIDI_MSG_CONTROLLER:
 
-                            if (msg == LV2_MIDI_CTL_ALL_NOTES_OFF || msg[1] == LV2_MIDI_CTL_ALL_NOTES_OFF) {
+                            if (msg[1] == LV2_MIDI_CTL_ALL_NOTES_OFF || msg[1] == LV2_MIDI_CTL_ALL_NOTES_OFF) {
 
                                 key->off();
                             
