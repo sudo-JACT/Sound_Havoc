@@ -1,3 +1,4 @@
+/* Reset styles */
 @import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Sixtyfour&family=Workbench&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&family=Sixtyfour&family=Workbench&display=swap');
@@ -10,32 +11,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+128+Text&family=Libre+Barcode+39+Text&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Libre+Barcode+128+Text&family=Libre+Barcode+39+Text&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
 :root {
 
-    --text: #dbd3ca;
-    --background: #191818;
-    --primary: #6e6c65;
-    --secondary: #3f3e3d;
-    --accent: #6b6a67;
+    --text: #ffffff;
+    --backgroud: #8f401e;
+    --primary: #916d46;
+    --primary2: #54828b;
+    --secondary: #a1481e;
+    --accent: #324654;
     --formw: 100rem;
     --formh: 50rem;
 
 }
 
-body {
-
-    background-color: var(--background);
-    color: var(--text);
-
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
 
 .sixtyfour {
 
     font-family: "Sixtyfour", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 400;
+    /*font-weight: 400;*/
     font-style: normal;
     font-variation-settings:
         "BLED" 0,
@@ -46,7 +48,7 @@ body {
 .workbench {
     font-family: "Workbench", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 400;
+    /*font-weight: 400;*/
     font-style: normal;
     font-variation-settings:
         "BLED" 0,
@@ -56,73 +58,336 @@ body {
 .protest-guerrilla-regular {
 
     font-family: "Protest Guerrilla", sans-serif;
-    font-weight: 400;
+    /*font-weight: 400;*/
     font-style: normal;
 }
 
 .rubik-lines-regular {
     font-family: "Rubik Lines", system-ui;
-    font-weight: 400;
+    /*font-weight: 400;*/
     font-style: normal;
 }
 
 .rubik-broken-fax-regular {
     font-family: "Rubik Broken Fax", system-ui;
-    font-weight: 400;
+    /*font-weight: 400;*/
     font-style: normal;
 }
 
 .rubik-glitch-regular {
     font-family: "Rubik Glitch", system-ui;
-    font-weight: 400;
+    /*font-weight: 400;*/
     font-style: normal;
 }
 
 .aboreto-regular {
     font-family: "Aboreto", system-ui;
-    font-weight: 400;
+    /*font-weight: 400;*/
     font-style: normal;
 }
 
 .rubik-maze-regular {
     font-family: "Rubik Maze", system-ui;
-    font-weight: 400;
+    /*font-weight: 400;*/
     font-style: normal;
 }
 
 .libre-barcode-39-extended-text-regular {
     font-family: "Libre Barcode 39 Extended Text", system-ui;
-    font-weight: 400;
+    /*font-weight: 400;*/
     font-style: normal;
 }
 
 .libre-barcode-39-text-regular {
     font-family: "Libre Barcode 39 Text", system-ui;
-    font-weight: 400;
+    /*font-weight: 400;*/
     font-style: normal;
 }
 
 .libre-barcode-128-text-regular {
     font-family: "Libre Barcode 128 Text", system-ui;
-    font-weight: 400;
+    /*font-weight: 400;*/
     font-style: normal;
 }
 
 .allerta-stencil-regular {
     font-family: "Allerta Stencil", sans-serif;
-    font-weight: 400;
+    /*font-weight: 400;*/
     font-style: normal;
 }
 
-iframe {
+.special-elite-regular {
+    font-family: "Special Elite", system-ui;
+    /*font-weight: 400;*/
+    font-style: normal;
+}
 
+@font-face {
+    font-family: Funkrocker;
+    src: url("../fonts/funkrocker/Funkrocker.otf");
+}
+
+@font-face {
+    font-family: Mustasurma;
+    src: url("../fonts/mustasurma/Mustasurma.ttf");
+}
+
+@font-face {
+    font-family: shinAkibapunx;
+    src: url("../fonts/shin-akiba/shinAkibapunx.ttf");
+}
+
+@font-face {
+    font-family: Punktype;
+    src: url("../fonts/punktype/Punktype.ttf");
+}
+
+@font-face {
+    font-family: coldnightforalligators;
+    src: url("../fonts/cold-night-for-alligators/coldnightforalligators.ttf");
+}
+
+@font-face {
+    font-family: Vtks Money2;
+    src: url("../fonts/vtks-money-2/Vtks\ Money2.ttf");
+}
+
+@font-face {
+    font-family: Cybrpnuk2;
+    src: url("../fonts/cyberpnuk2/Cybrpnuk2.ttf");
+}
+
+@font-face {
+    font-family: RUSTED PERSONAL USE;
+    src: url("../fonts/rusted-personal-use/RUSTED\ PERSONAL\ USE.ttf");
+}
+
+@font-face {
+    font-family: Anarchaos;
+    src: url("../fonts/anarchaos/Anarchaos.otf");
+}
+
+@font-face {
+    font-family: ASGORE;
+    src: url("../fonts/asgore/ASGORE.otf");
+}
+
+@font-face {
+    font-family: vVWweRraType;
+    src: url("../fonts/vvwwerratype/vVWweRraType!.ttf");
+}
+
+.Funkrocker {
+    font-family: "Funkrocker", system-ui;
+    /*font-weight: 400;*/
+    font-style: normal;
+}
+
+.Mustasurma {
+    font-family: "Mustasurma", system-ui;
+    /*font-weight: 400;*/
+    font-style: normal;
+}
+
+.shinAkibapunx {
+    font-family: "shinAkibapunx", system-ui;
+    /*/*font-weight: 400;*/
+    font-style: normal;
+}
+
+.Punktype {
+    font-family: "Punktype", system-ui;
+    /*/*font-weight: 400;*/
+    font-style: normal;
+}
+
+.coldnightforalligators {
+    font-family: "coldnightforalligators", system-ui;
+    /*/*font-weight: 400;*/
+    font-style: normal;
+}
+
+.Vtks_Money2 {
+    font-family: "Vtks Money2", system-ui;
+    /*/*font-weight: 400;*/
+    font-style: normal;
+}
+
+.Cybrpnuk2 {
+    font-family: "Cybrpnuk2", system-ui;
+    /*/*font-weight: 400;*/
+    font-style: normal;
+}
+
+.RUSTED {
+    font-family: "RUSTED PERSONAL USE", system-ui;
+    /*/*font-weight: 400;*/
+    font-style: normal;
+}
+
+.Anarchaos {
+    font-family: "Anarchaos", system-ui;
+    /*/*font-weight: 400;*/
+    font-style: normal;
+}
+
+.ASGORE {
+    font-family: "ASGORE", system-ui;
+    /*/*font-weight: 400;*/
+    font-style: normal;
+}
+
+.vVWweRraType {
+    font-family: "vVWweRraType", system-ui;
+    /*/*font-weight: 400;*/
+    font-style: normal;
+}
+
+
+/* Body styles */
+body {
+    font-family: Arial, sans-serif;
+    /*background-color: var(--backgroud);*/
+    /*background-image: url('../imgs/make_a_skull_wallpaper_with_rust_palette.png');*/
+    background-image: url('../imgs/make_a_skull_wallpaper_with_rust_palette (1).png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
     color: var(--text);
+    text-align: center;
+}
+
+/* Header styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: var(--primary);
+}
+
+.logo h1 {
+    font-size: 24px;
+}
+
+header {
+
+    position: fixed;
+    top: 0;
+    width: 100%;
 
 }
 
-form {
+nav ul {
+    list-style: none;
+}
 
-    background-color: var(--secondary);
+nav ul li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: var(--text);
+}
+
+/* Hero section styles */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary);
+    color: var(--text);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn2 {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary2);
+    color: var(--text);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--accent);
+}
+
+.btn2:hover {
+    background-color: var(--primary);
+}
+
+/* Plugins section styles */
+.plugins {
+    text-align: center;
+    padding: 80px 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.plugins h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+.card {
+
+    border-color: var(--accent);
+    margin: 4rem;
+
+}
+
+.card-body {
+
+    background-color: var(--primary2);
+
+}
+
+/*.card img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}*/
+
+.about {
+
+    margin-bottom: 140px;
+
+}
+
+.container {
+
+    background-color: rgba(161, 72, 30, 0.5);
+    /*var(--secondary)*/
     border-radius: 2rem;
     padding: 1rem;
     text-align: center;
@@ -130,11 +395,23 @@ form {
 
     width: var(--formw);
     height: var(--formh);
-    
-    position: fixed;
+
+    /*position: fixed;
     top: calc(50vh - calc(var(--formh)) / 2);
-    left: calc(50vw - calc(var(--formw) / 2));
+    left: calc(50vw - calc(var(--formw) / 2));*/
 
     overflow: auto;
 
+}
+
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--accent);
+}
+
+footer p {
+    font-size: 14px;
 }
