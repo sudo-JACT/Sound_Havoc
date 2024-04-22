@@ -30,13 +30,145 @@ enum IOPorts {
 };
 
 struct Urids {
-
     LV2_URID midi_MidiEvent;
-
 };
 
+enum KeyStatus {
+    KEY_OFF = 0,
+    KEY_PRESSED = 1,
+    KEY_RELEASED = 2
+};
 
-/*struct definition*/
+struct Envelope {
+    double attack;
+    double decay;
+    float sustain;
+    double release;
+};
+
+class Key {
+
+    private:
+
+        KeyStatus status;
+        u8 note;
+        u8 velocity;
+        Envelope envelope;
+        double rate;
+        double position;
+        float start_lever;
+        double freq;
+        double time;
+
+        float adsr() {
+
+            switch (status) {
+
+                case KEY_PRESSED:
+
+                    if(time < envelope.attack) {
+
+                        return start_lever + (1 -start_lever) * time / envelope.attack;
+
+                    }
+
+                    if(time < envelope.attack + envelope.decay) {
+
+                        return 1 + (envelope.sustain - 1) * (time - envelope.attack) / envelope.decay;
+
+                    }
+
+                    return envelope.sustain;
+
+                    break;
+
+                case KEY_RELEASED:
+
+                    return start_lever - start_lever * time / envelope.release;
+
+                    break;
+
+                default:
+
+                    return 0;
+
+                    break;
+
+            }
+
+        }
+
+    public:
+
+        Key(const double rt) {
+
+            status = KEY_OFF;
+            note = 0;
+            velocity = 0;
+            envelope = {0, 0, 0, 0};
+            position = 0;
+            start_lever = 0;
+            rate = rt;
+            freq = pow(2, (double (note) - 69) / 12) * 440;
+            time = 0;
+
+        }
+
+        void press(u8 nt, const u8 v, const Envelope e) {
+
+            start_lever = adsr();
+            note = nt;
+            velocity = v;
+            envelope = e;
+            status = KEY_PRESSED;
+            freq = pow(2, (double (note) - 69) / 12) * 440;
+            time = 0;
+
+        }
+
+        void release(const u8 nt, const u8 v) {
+
+            if (status == KEY_PRESSED && note == nt) {
+
+                start_lever = adsr();
+                status = KEY_RELEASED;
+                time = 0;
+
+            }
+
+        }
+
+        void off() {
+
+            position = 0;
+            status = KEY_OFF;
+
+        }
+
+
+        float get() {
+
+            float synth_note = adsr() * sin(2 * M_PI * position) * (float(velocity) / 127);
+
+            return synth_note;
+
+        }
+
+        void proceed() {
+
+            position = freq / rate;
+            time = 1 / rate;
+
+            if (status == KEY_RELEASED && time >= envelope.release) {
+                
+                off();
+            
+            }
+            
+
+        }
+
+};
 
 class Synth {
 
@@ -49,12 +181,14 @@ class Synth {
         double position;
         LV2_URID_Map *map;
         Urids urids;
+        Key* key;
 
         void play(const u32 start, const u32 end) {
 
             for(u32 i=start; i < end; i++) {
 
-                //pass
+                audio_out_ptr[i] = key->get() * *adsr_ptr[ADSR_LEVEL];
+                key->proceed();
 
             }
 
@@ -76,6 +210,7 @@ class Synth {
             
             rate = sample_rate;
             position = 0.0;
+            key = new Key(rate);
 
             map = (nullptr);
 
@@ -164,15 +299,26 @@ class Synth {
                     switch (type) {
 
                         case LV2_MIDI_MSG_NOTE_ON:
-                            /* code */
+                            
+                            key->press(msg[1], msg[2], {*adsr_ptr[ADSR_ATTACK], *adsr_ptr[ADSR_DECAY], *adsr_ptr[ADSR_SUSTAIN], *adsr_ptr[ADSR_RELEASE]});
+
                             break;
 
                         case LV2_MIDI_MSG_NOTE_OFF:
-                            /* code */
+
+                            key->release(msg[1], msg[2]);
+
                             break;
 
                         case LV2_MIDI_MSG_CONTROLLER:
-                            /* code */
+
+                            if (msg == LV2_MIDI_CTL_ALL_NOTES_OFF || msg[1] == LV2_MIDI_CTL_ALL_NOTES_OFF) {
+
+                                key->off();
+                            
+                            }
+                            
+
                             break;
 
                         default:
