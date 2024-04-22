@@ -312,10 +312,14 @@ class Synth {
 
                         case LV2_MIDI_MSG_CONTROLLER:
 
-                            if (msg[1] == LV2_MIDI_CTL_ALL_NOTES_OFF || msg[1] == LV2_MIDI_CTL_ALL_NOTES_OFF) {
+                            if (msg[1] == LV2_MIDI_CTL_ALL_NOTES_OFF) {
 
                                 key->off();
                             
+                            }else if(msg[1] == LV2_MIDI_CTL_ALL_NOTES_OFF) {
+
+                                key->off();
+
                             }
                             
 
@@ -344,53 +348,53 @@ class Synth {
 //const char *URI
 static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sample_rate, const char *bundle_path, const LV2_Feature *const *features) {
 
-    Synth* ng = new Synth(sample_rate, features);
+    Synth* sy = new Synth(sample_rate, features);
 
-    return ng;
+    return sy;
 
 }
 
 static void connect_port(LV2_Handle instance, uint32_t port, void *data_location) {
 
-    Synth* ng = (Synth*) instance;
+    Synth* sy = (Synth*) instance;
 
-    if(!ng) {
+    if(!sy) {
 
         return;
 
     }
 
-    ng->connectPort(port, data_location);
+    sy->connectPort(port, data_location);
 
 
 }
 
 static void activate(LV2_Handle instance) {
 
-    Synth* ng = (Synth*) instance;
+    Synth* sy = (Synth*) instance;
 
-    if (!ng) {
+    if (!sy) {
 
         return;
     
     }
 
-    ng->activate();
+    sy->activate();
     
 
 }
 
 static void run(LV2_Handle instance, uint32_t sample_count) {
 
-    Synth* ng = (Synth*) instance;
+    Synth* sy = (Synth*) instance;
 
-    if (!ng) {
+    if (!sy) {
 
         return;
     
     }
 
-    ng->run(sample_count);
+    sy->run(sample_count);
 
 }
 
@@ -402,15 +406,15 @@ static void deactivate(LV2_Handle instance) {
 
 static void cleanup(LV2_Handle instance) {
 
-    Synth *ng = (Synth *)instance;
+    Synth *sy = (Synth *)instance;
 
-    if (!ng)
+    if (!sy)
     {
 
         return;
     }
 
-    delete ng;
+    delete sy;
 }
 
 static const void* extension_data(const char *uri) {
