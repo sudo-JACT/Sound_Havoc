@@ -10,17 +10,31 @@
 #include <lv2/midi/midi.h>
 #include <lv2/core/lv2_util.h>
 
+#define u8 uint8_t
 #define u32 uint32_t
 
-enum ControlPorts {
-
-    CONTROL_ATTACK = 0,
-    CONTROL_DECAY = 1,
-    CONTROL_SUSTAIN = 2,
-    CONTROL_RELEASE = 3,
-    CONTROL_LEVEL = 4,
-    CONTROL_NR = 5,
+enum ADSRPorts {
+    ADSR_ATTACK = 0,
+    ADSR_DECAY = 1,
+    ADSR_SUSTAIN = 2,
+    ADSR_RELEASE = 3,
+    ADSR_LEVEL = 4,
+    ADSR_NR = 5,
 };
+
+enum IOPorts {
+    IO_MIDI_IN = 0,
+    IO_AUDIO_OUT = 1,
+    IO_CONTROL = 2,
+    IO_NR = 3
+};
+
+struct Urids {
+
+    LV2_URID midi_MidiEvent;
+
+};
+
 
 /*struct definition*/
 
@@ -30,27 +44,55 @@ class Synth {
 
         const LV2_Atom_Sequence* midi_in_ptr;
         float* audio_out_ptr;
-        float* freq_ptr;
-        /*const float* attack_ptr;
-        const float* decay_ptr;
-        const float* sustain_ptr;
-        const float* release_ptr;
-        const float* level_ptr;*/
-        const float* control_ptr[CONTROL_NR];
+        const float *adsr_ptr[ADSR_NR];
         double rate;
         double position;
+        LV2_URID_Map *map;
+        Urids urids;
+
+        void play(const u32 start, const u32 end) {
+
+            for(u32 i=start; i < end; i++) {
+
+                //pass
+
+            }
+
+        }
 
 
     public:
 
-        Synth(const double sample_rate) {
+        Synth(const double sample_rate, const LV2_Feature *const *features) {
 
+            midi_in_ptr = (nullptr);
             audio_out_ptr = (float*) nullptr;
-            freq_ptr = (float *) nullptr;
-            level_ptr = (float *) nullptr;
+
+            for (u32 i=0; i < ADSR_NR; i++) {
+
+                adsr_ptr[i] = (nullptr);
+            
+            }
+            
             rate = sample_rate;
             position = 0.0;
 
+            map = (nullptr);
+
+            const char *missing = lv2_features_query(
+                features,
+                LV2_URID__map, &map, true,
+                NULL
+            );
+
+            if (missing) {
+
+                throw;
+            
+            }
+
+            urids.midi_MidiEvent = map->map(map->handle, LV2_MIDI__MidiEvent);
+            
         }
 
         //-Synth(); i use the default c++ destructor
@@ -59,19 +101,23 @@ class Synth {
 
             switch (port) {
 
-                case 0:
+                case IO_MIDI_IN:
+                    midi_in_ptr = (const LV2_Atom_Sequence*) data_location;
+                    break;
+
+                case IO_AUDIO_OUT:
                     audio_out_ptr = (float*) data_location;
                     break;
 
-                case 1:
-                    freq_ptr = (float*) data_location;
-                    break;
-
-                case 2:
-                    level_ptr = (float*) data_location;
-                    break;
-
                 default:
+
+                    if (port < IO_CONTROL + ADSR_NR) {
+
+                        adsr_ptr[port - IO_CONTROL] = (const float*) data_location;
+                    
+                    }
+                    
+
                     break;
 
             }
@@ -79,26 +125,67 @@ class Synth {
         }
         void activate() {
 
-            position = 0.0;
+            /*position = 0.0;*/
 
         }
 
         void run(const u32 sample_count) {
 
-            if ((!audio_out_ptr) || (!freq_ptr) || (!level_ptr)) {
+            if ((!audio_out_ptr) || (!midi_in_ptr)) {
 
                 return;
             
             }
 
-            for (u32 i=0; i < sample_count; i++) {
+            for (u32 i=0; i < ADSR_NR; i++) {
 
-                audio_out_ptr[i] = sin(2.0 * M_PI * position) * *level_ptr;
+                if ((!adsr_ptr[i])) {
+                    
+                    return;
                 
-                position += *freq_ptr / rate;
+                }
+                
             
             }
+
+            u32 last_frame = 0;
+            LV2_ATOM_SEQUENCE_FOREACH(midi_in_ptr, ev) {
+
+                const u32 frame = ev->time.frames;
+                play(last_frame, frame);
+                last_frame = frame;
+
+                if (ev->body.type = urids.midi_MidiEvent) {
+
+                    const u8* const msg = (const u8*) (ev + 1);
+
+                    const u8 type = lv2_midi_message_type(msg);
+
+                    switch (type) {
+
+                        case LV2_MIDI_MSG_NOTE_ON:
+                            /* code */
+                            break;
+
+                        case LV2_MIDI_MSG_NOTE_OFF:
+                            /* code */
+                            break;
+
+                        case LV2_MIDI_MSG_CONTROLLER:
+                            /* code */
+                            break;
+
+                        default:
+                            break;
+                    
+                    }
+                
+                }
+                
+
+            }
             
+            play(last_frame, sample_count);
             
 
         }
@@ -111,7 +198,7 @@ class Synth {
 //const char *URI
 static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sample_rate, const char *bundle_path, const LV2_Feature *const *features) {
 
-    Synth* ng = new Synth(sample_rate);
+    Synth* ng = new Synth(sample_rate, features);
 
     return ng;
 
