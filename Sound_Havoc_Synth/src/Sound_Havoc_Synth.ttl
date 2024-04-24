@@ -7,6 +7,7 @@
 @prefix atom: <http://lv2plug.in/ns/ext/atom#> .
 @prefix midi: <http://lv2plug.in/ns/ext/midi#> .
 @prefix urid: <http://lv2plug.in/ns/ext/urid#> .
+@prefix foaf: <http://xmlns.com/foaf/spec/> .
 
 <https://github.com/sudo-JACT/Sound_Havoc/tree/main/Sound_Havoc_Synth/src> a lv2:Plugin , lv2:OscillatorPlugin , doap:Project;
     lv2:binary <Sound_Havoc_Synth.so>;
@@ -15,6 +16,7 @@
     lv2:requiredFeature urid:map;
     lv2:minorVersion 1;
     lv2:microVersion 1;
+    foaf:name "1md0nk3y";
 
     lv2:port [
 
