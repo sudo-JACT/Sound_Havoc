@@ -3,15 +3,9 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
-#include <cmath>
 #include <lv2.h>
 #include <stdexcept>
 #include <new>
-#include <lv2/atom/atom.h>
-#include <lv2/atom/util.h>
-#include <lv2/urid/urid.h>
-#include <lv2/midi/midi.h>
-#include <lv2/core/lv2_util.h>
 
 #define u8 uint8_t
 #define u16 uint16_t
@@ -30,74 +24,46 @@ using namespace std;
 
 } Sound_Havoc_Amplifier;*/
 
+enum Ports {
+    AUDIO_IN_PTR = 0,
+    AUDIO_OUT_PTR = 1,
+    AMP_PTR = 2,
+    PTR_RN = 3,
+};
+
 class Amplifier {
 
     private:
 
-        float* audio_in_ptr;
-        float* audio_out_ptr;
-        float* amp_ptr;
+        float* ports[PTR_RN];
 
     public:
 
         Amplifier() {
 
-            audio_in_ptr = static_cast<float*> (nullptr);
-            audio_out_ptr = static_cast<float*> (nullptr);
-            amp_ptr = static_cast<float*> (nullptr);
+            for (u32 i=0; i < PTR_RN; i++) {
+
+                ports[i] = static_cast<float*> (nullptr);
+            
+            }
+            
 
         }
 
-        float* getAudioIn() {
-
-            return audio_in_ptr;
-
-        }
-
-        float* getAudioOut() {
-
-            return audio_out_ptr;
-
-        }
-
-        float* getAmp() {
-
-            return amp_ptr;
-
-        }
-
-        void setAudioIn(float* source) {
-
-            audio_in_ptr = static_cast<float*> (source);
-
-        }
-
-        void setAudioOut(float* source) {
-
-            audio_out_ptr = static_cast<float*> (source);
-
-        }
-
-        void setAmp(float* source) {
-
-            amp_ptr = static_cast<float*> (source);
-
-        }
-
-        void connect_port(u32 port, void *data_location) {
+        void connect_port(u32 port, void* data_location) {
 
             switch (port) {
 
-                case 0:
-                    audio_in_ptr= static_cast<float*> (data_location);
+                case AUDIO_IN_PTR:
+                    ports[AUDIO_IN_PTR] = static_cast<float*> (data_location);
                     break;
 
-                case 1:
-                    audio_out_ptr = static_cast<float*> (data_location);
+                case AUDIO_OUT_PTR:
+                    ports[AUDIO_OUT_PTR] = static_cast<float*> (data_location);
                     break;
 
-                case 2:
-                    amp_ptr = static_cast<float*> (data_location);
+                case AMP_PTR:
+                    ports[AMP_PTR] = static_cast<float*> (data_location);
                     break;
 
                 default:
@@ -107,15 +73,21 @@ class Amplifier {
 
         void run(u32 sample_count) {
 
-            if((!audio_in_ptr) || (!audio_out_ptr) || (!amp_ptr)) {
+            for (u32 i=0; i < PTR_RN; i++) {
+                
+                if (!ports[i]) {
 
-                return;
-    
+                    return;
+                
+                }
+                
+            
             }
+            
 
             for(u32 i=0; i < sample_count; i++) {
 
-                audio_out_ptr[i] = audio_in_ptr[i] * *(amp_ptr);
+                ports[AUDIO_OUT_PTR][i] = ports[AUDIO_IN_PTR][i] * *(ports[AMP_PTR]);
     
             }
 

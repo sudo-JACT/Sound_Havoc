@@ -1,0 +1,3 @@
+/home/imdonkey/Desktop/Sound_Havoc/Sound_Havoc_Amplifier/src/CMakeFiles/Sound_Havoc_Amplifier_NoUI.dir
+/home/imdonkey/Desktop/Sound_Havoc/Sound_Havoc_Amplifier/src/CMakeFiles/edit_cache.dir
+/home/imdonkey/Desktop/Sound_Havoc/Sound_Havoc_Amplifier/src/CMakeFiles/rebuild_cache.dir
