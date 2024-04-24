@@ -179,7 +179,7 @@
 
 .Funkrocker {
     font-family: "Funkrocker", system-ui;
-    /*font-weight: 400;*/
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -249,7 +249,8 @@ body {
     font-family: Arial, sans-serif;
     /*background-color: var(--backgroud);*/
     /*background-image: url('../imgs/make_a_skull_wallpaper_with_rust_palette.png');*/
-    background-image: url('../imgs/make_a_skull_wallpaper_with_rust_palette (1).png');
+    /*background-image: url('../imgs/make_a_skull_wallpaper_with_rust_palette (1).png');*/
+    background-image: url('../imgs/make_a_skull_wallpaper_with_rust_palette_and_a_dark_background.png');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -264,6 +265,7 @@ header {
     align-items: center;
     padding: 20px;
     background-color: var(--primary);
+    z-index: 99;
 }
 
 .logo h1 {
@@ -349,10 +351,43 @@ nav ul li a {
     margin-bottom: 40px;
 }
 
+@keyframes example {
+    from {
+        box-shadow: 1px 1px 2px var(--backgroud), 1px 0 25px var(--primary2), 1px 0 5px var(--accent);
+    }
+
+    to {
+        box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    }
+}
+
+@keyframes example2 {
+    from {
+        box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+    }
+
+    to {
+        box-shadow: 1px 1px 2px var(--backgroud), 1px 0 25px var(--primary2), 1px 0 5px var(--accent);
+    }
+}
+
 .card {
 
     border-color: var(--accent);
     margin: 4rem;
+    box-shadow: 1px 1px 2px var(--backgroud), 1px 0 25px var(--primary2), 1px 0 5px var(--accent);
+
+    animation-name: example2;
+    animation-duration: 1s;
+
+}
+
+.card:hover {
+
+    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
+
+    animation-name: example;
+    animation-duration: 1s;
 
 }
 
@@ -396,6 +431,9 @@ nav ul li a {
     width: var(--formw);
     height: var(--formh);
 
+    font-size: x-large;
+    box-shadow: 1px 1px 2px var(--accent), 0 0 25px var(--primary2), 0 0 5px var(--backgroud);
+
     /*position: fixed;
     top: calc(50vh - calc(var(--formh)) / 2);
     left: calc(50vw - calc(var(--formw) / 2));*/
@@ -414,4 +452,26 @@ footer {
 
 footer p {
     font-size: 14px;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: var(--backgroud);
+    border-radius: 3rem;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: var(--primary2);
+    border-radius: 3rem;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
 }
