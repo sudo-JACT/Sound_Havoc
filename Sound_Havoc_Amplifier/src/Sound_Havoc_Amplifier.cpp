@@ -1,5 +1,4 @@
 /*libs*/
-#include <stdlib.h>
 #include <iostream>
 #include <new>
 #include <stdexcept>
@@ -7,8 +6,6 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
-#include <stddef.h>
-#include <stdint.h>
 #include <lv2.h>
 
 #define u8 uint8_t
