@@ -1,1 +1,0 @@
-/usr/bin/c++ -fPIC -shared  -o /home/imdonkey/Desktop/Sound_Havoc/Sound_Havoc_Amplifier/Sound_Havoc_Amplifier.lv2/Sound_Havoc_Amplifier.so CMakeFiles/Sound_Havoc_Amplifier_NoUI.dir/Sound_Havoc_Amplifier.o
