@@ -213,7 +213,7 @@ static LV2_Descriptor const descriptor = {
 };
 
 /*interface*/
-const LV2_Descriptor *lv2_descriptor(uint32_t index) {
+extern "C" LV2_Descriptor const *lv2_descriptor(uint32_t index) {
 
     if(index == 0) {
 
