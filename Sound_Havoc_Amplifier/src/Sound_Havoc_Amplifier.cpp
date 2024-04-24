@@ -82,6 +82,27 @@ class Amplifier {
 
         }
 
+        void connect_port(u32 port, void *data_location) {
+
+            switch (port) {
+
+                case 0:
+                    audio_in_ptr= static_cast<float*> (data_location);
+                    break;
+
+                case 1:
+                    audio_out_ptr = static_cast<float*> (data_location);
+                    break;
+
+                case 2:
+                    amp_ptr = static_cast<float*> (data_location);
+                    break;
+
+                default:
+                    break;
+            }
+        }
+
         void run(u32 sample_count) {
 
             if((!audio_in_ptr) || (!audio_out_ptr) || (!amp_ptr)) {
@@ -131,26 +152,8 @@ static void connect_port(LV2_Handle instance, uint32_t port, void *data_location
         return;
 
     }
-
-    float* tmp = static_cast<float*> (data_location);
-
-    switch (port) {
-
-        case 0:
-            amp->setAudioIn(tmp);
-            break;
-
-        case 1:
-            amp->setAudioOut(tmp);
-            break;
-
-        case 2:
-            amp->setAmp(tmp);
-            break;
-
-        default:
-            break;
-    }
+    
+    amp->connect_port(port, data_location);
 
 }
 
@@ -164,9 +167,13 @@ static void run(LV2_Handle instance, uint32_t sample_count) {
 
     Amplifier* amp = static_cast<Amplifier*> (instance);
 
+    if (!amp) {
+
+        return;
+    
+    }
+
     amp->run(sample_count);
-    
-    
 
 }
 
