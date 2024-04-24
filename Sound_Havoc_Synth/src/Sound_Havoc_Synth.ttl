@@ -16,7 +16,6 @@
     lv2:requiredFeature urid:map;
     lv2:minorVersion 1;
     lv2:microVersion 1;
-    foaf:name "1md0nk3y";
 
     lv2:port [
 
