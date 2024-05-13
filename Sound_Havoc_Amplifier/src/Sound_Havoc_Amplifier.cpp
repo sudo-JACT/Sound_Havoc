@@ -35,9 +35,11 @@ class Amplifier {
 
     private:
 
-        float* ports[PTR_RN];
+        
 
     public:
+    
+        float *ports[PTR_RN];
 
         Amplifier() {
 
