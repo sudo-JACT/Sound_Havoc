@@ -4,7 +4,7 @@
 
 ### IT
 
-Sound Havoc nasce dall'unione della mia passione per la musica e  quella per l'informatica, solo per dire, anche mentre scrivo questo sto ascoltando musica ([Thank You Again,  by Spite](https://open.spotify.com/intl-it/track/1gdNdUdDmVpwVV2c6LgOIW?si=58dc6dcdf33d47e1).
+Sound Havoc nasce dall'unione della mia passione per la musica e  quella per l'informatica, solo per dire, anche mentre scrivo questo sto ascoltando musica ([Thank You Again,  by Spite](https://open.spotify.com/intl-it/track/1gdNdUdDmVpwVV2c6LgOIW?si=58dc6dcdf33d47e1)).
 
 Questo progetto è l'apoteosi della loro unione, da un lato la creatività della musica, dall'altro l'inventiva dell'informatica.
 
@@ -28,7 +28,7 @@ In conclusione, Sound Havoc rappresenta l'esaltazione della mia passione per la 
 
 ### EN
 
-Sound Havoc was born from the union of my passion for music and computer science, just to say, even as I write this I’m listening to music ([Thank You Again, by Spite](https///open.spotify.com/intl-it/track/1gdNdUdDmVpwV2c6LgOW?si=58dc6df33d47e1).
+Sound Havoc was born from the union of my passion for music and computer science, just to say, even as I write this I’m listening to music ([Thank You Again, by Spite](https///open.spotify.com/intl-it/track/1gdNdUdDmVpwV2c6LgOW?si=58dc6df33d47e1)).
 
 This project is the apotheosis of their union, on the one hand the creativity of music, on the other the inventiveness of computer science.
 
