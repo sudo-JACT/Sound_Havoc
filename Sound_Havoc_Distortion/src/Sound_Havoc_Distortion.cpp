@@ -72,15 +72,15 @@ static void run(LV2_Handle instance, uint32_t sample_count) {
 
         if (dist->audio_in_ptr[i] > 0) {
 
-            dist->audio_out_ptr[i] = sqrt(dist->audio_in_ptr[i] * *(dist->dist_ptr));
+            // dist->audio_out_ptr[i] = sqrt(dist->audio_in_ptr[i] * *(dist->dist_ptr));
 
-            // dist->audio_out_ptr[i] = (dist->audio_in_ptr[i] * sqrt(*(dist->dist_ptr))) + (sqrt(dist->audio_in_ptr[i]) * *(dist->dist_ptr));
+            dist->audio_out_ptr[i] = (dist->audio_in_ptr[i] * sqrt(*(dist->dist_ptr))) + (sqrt(dist->audio_in_ptr[i]) * *(dist->dist_ptr));
                 
         }else {
 
-            dist->audio_out_ptr[i] = -1 * sqrt((dist->audio_in_ptr[i] * -1) * *(dist->dist_ptr));
+            // dist->audio_out_ptr[i] = -1 * sqrt((dist->audio_in_ptr[i] * -1) * *(dist->dist_ptr));
 
-            // dist->audio_out_ptr[i] = -1 * (((dist->audio_in_ptr[i] * -1) * sqrt(*(dist->dist_ptr))) + (sqrt((dist->audio_in_ptr[i] * -1)) * *(dist->dist_ptr)));
+            dist->audio_out_ptr[i] = -1 * (((dist->audio_in_ptr[i] * -1) * sqrt(*(dist->dist_ptr))) + (sqrt((dist->audio_in_ptr[i] * -1)) * *(dist->dist_ptr)));
 
         }
         
