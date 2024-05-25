@@ -3,9 +3,9 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix doap: <http://usefulinc.com/ns/doap#>.
 
-<https://github.com/sudo-JACT/Sound_Havoc/tree/main/Sound_Havoc_Distortion/src> a lv2:Plugin , lv2:AmplifierPlugin , doap:Project;
-    lv2:binary <Sound_Havoc_Distortion.so>;
-    doap:name "Sound Havoc Distortion";
+<https://github.com/sudo-JACT/Sound_Havoc/tree/main/Sound_Havoc_Fuzz/src> a lv2:Plugin , lv2:AmplifierPlugin , doap:Project;
+    lv2:binary <Sound_Havoc_Fuzz.so>;
+    doap:name "Sound Havoc Fuzz";
     lv2:optionalFeature lv2:hardRTCapable;
     lv2:minorVersion 1;
     lv2:microVersion 2;
@@ -33,4 +33,16 @@
             lv2:default 5.0;
             lv2:minimum 1.0;
             lv2:maximum 10.0;
+        ] ,
+
+        [
+            a lv2:InputPort , lv2:ControlPort;
+            lv2:index 3;
+            lv2:symbol "quick_adjust" ;
+            lv2:name "Quick Adjust" ;
+            lv2:default 0;
+            lv2:minimum 0;
+            lv2:maximum 1;
+
+            lv2:portProperty lv2:integer, pprop:trigger, lv2:toggled;
         ] .
