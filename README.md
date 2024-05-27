@@ -40,4 +40,4 @@ In conclusion, Sound Havoc represents the exaltation of my passion for music and
 
 ## IN PROGRES...
 
-[Support Writhing Misery on Ko-fi! ❤️. ko-fi.com/writhing_misery - Ko-fi ❤️ Where creators get support from fans through donations, memberships, shop sales and more! The original 'Buy Me a Coffee' Page.](https://ko-fi.com/writhing_misery)
+[Donate](https://ko-fi.com/writhing_misery)
