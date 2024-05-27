@@ -26,8 +26,12 @@ after that you have to move the directory "plugin_name.lv2" in your .lv2 directo
 mv ../plugin_name.lv2 /home/username/.lv2
 ```
 
-## IN PROGRES...
+
 
 * [Sound_Havoc Wiki](https://github.com/sudo-JACT/Sound_Havoc/wiki)
 
 * [Donate](https://ko-fi.com/writhing_misery)
+
+
+
+## IN PROGRES...
