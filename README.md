@@ -38,8 +38,6 @@ In addition to the basic features, I’m also working on implementing new effect
 
 In conclusion, Sound Havoc represents the exaltation of my passion for music and computer science, allowing musicians to explore new sound possibilities and customize their sound in a unique way. I’m excited to share this project with the music community and continue to develop it to bring new features and improvements.
 
+## IN PROGRES...
 
-
-## PLUGINS
-
-## CONNESSIONI CON LE DIVERSE MATERIE
+[Support Writhing Misery on Ko-fi! ❤️. ko-fi.com/writhing_misery - Ko-fi ❤️ Where creators get support from fans through donations, memberships, shop sales and more! The original 'Buy Me a Coffee' Page.](https://ko-fi.com/writhing_misery)
