@@ -223,6 +223,14 @@
     font-style: normal;
 }
 
+:root {
+
+    --background: #333;
+    --secondary: #666;
+    --accent: #666;
+
+}
+
 body {
     background-color: #000;
     color: #fff;
@@ -405,4 +413,32 @@ footer p {
     font-family: 'Special Elite', sans-serif;
     font-size: 16px;
 
+}
+
+.plugin-card {
+    border: 2px solid var(--secondary);
+    margin: 2rem;
+    padding: 1rem;
+    box-shadow: 0 0 15px var(--accent);
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: var(--background);
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.plugin-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--secondary);
+    animation: none;
 }
