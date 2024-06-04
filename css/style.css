@@ -243,14 +243,14 @@ body {
 }
 
 header h1 {
-    font-family: 'Black Metal Logo', cursive;
+    font-family: 'Rubik Glitch', cursive;
     font-size: 48px;
     text-align: center;
     margin: 0;
 }
 
 nav ul li a {
-    font-family: 'Gothic', sans-serif;
+    font-family: 'Protest Guerrilla', sans-serif;
     text-decoration: none;
     color: #fff;
     font-size: 18px;
@@ -322,6 +322,18 @@ h3 {
     /* Assicura che l'altezza dell'immagine si adatti proporzionalmente alla larghezza */
 }
 
+.plugin-card h3 {
+
+    padding-top: 1rem;
+    font-family: 'Rubik Maze', cursive;
+
+}
+
+.plugin-card p {
+    font-family: 'Special Elite', sans-serif;
+    font-size: 16px;
+}
+
 footer {
     background-color: #222;
     padding: 20px 0;
@@ -329,5 +341,7 @@ footer {
 }
 
 footer p {
+    font-family: 'Special Elite', sans-serif;
+    font-size: 14px;
     margin: 0;
 }
