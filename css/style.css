@@ -13,25 +13,60 @@
 @import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Libre+Barcode+128+Text&family=Libre+Barcode+39+Text&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
 
-:root {
-
-    --text: #ffffff;
-    --backgroud: #8f401e;
-    --primary: #916d46;
-    --primary2: #54828b;
-    --secondary: #a1481e;
-    --accent: #324654;
-    --formw: 100rem;
-    --formh: 50rem;
-
+@font-face {
+    font-family: Funkrocker;
+    src: url("../fonts/funkrocker/Funkrocker.otf");
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+@font-face {
+    font-family: Mustasurma;
+    src: url("../fonts/mustasurma/Mustasurma.ttf");
 }
 
+@font-face {
+    font-family: shinAkibapunx;
+    src: url("../fonts/shin-akiba/shinAkibapunx.ttf");
+}
+
+@font-face {
+    font-family: Punktype;
+    src: url("../fonts/punktype/Punktype.ttf");
+}
+
+@font-face {
+    font-family: coldnightforalligators;
+    src: url("../fonts/cold-night-for-alligators/coldnightforalligators.ttf");
+}
+
+@font-face {
+    font-family: Vtks Money2;
+    src: url("../fonts/vtks-money-2/Vtks\ Money2.ttf");
+}
+
+@font-face {
+    font-family: Cybrpnuk2;
+    src: url("../fonts/cyberpnuk2/Cybrpnuk2.ttf");
+}
+
+@font-face {
+    font-family: RUSTED PERSONAL USE;
+    src: url("../fonts/rusted-personal-use/RUSTED\ PERSONAL\ USE.ttf");
+}
+
+@font-face {
+    font-family: Anarchaos;
+    src: url("../fonts/anarchaos/Anarchaos.otf");
+}
+
+@font-face {
+    font-family: ASGORE;
+    src: url("../fonts/asgore/ASGORE.otf");
+}
+
+@font-face {
+    font-family: vVWweRraType;
+    src: url("../fonts/vvwwerratype/vVWweRraType!.ttf");
+}
 
 .sixtyfour {
 
@@ -122,61 +157,6 @@
     font-style: normal;
 }
 
-@font-face {
-    font-family: Funkrocker;
-    src: url("../fonts/funkrocker/Funkrocker.otf");
-}
-
-@font-face {
-    font-family: Mustasurma;
-    src: url("../fonts/mustasurma/Mustasurma.ttf");
-}
-
-@font-face {
-    font-family: shinAkibapunx;
-    src: url("../fonts/shin-akiba/shinAkibapunx.ttf");
-}
-
-@font-face {
-    font-family: Punktype;
-    src: url("../fonts/punktype/Punktype.ttf");
-}
-
-@font-face {
-    font-family: coldnightforalligators;
-    src: url("../fonts/cold-night-for-alligators/coldnightforalligators.ttf");
-}
-
-@font-face {
-    font-family: Vtks Money2;
-    src: url("../fonts/vtks-money-2/Vtks\ Money2.ttf");
-}
-
-@font-face {
-    font-family: Cybrpnuk2;
-    src: url("../fonts/cyberpnuk2/Cybrpnuk2.ttf");
-}
-
-@font-face {
-    font-family: RUSTED PERSONAL USE;
-    src: url("../fonts/rusted-personal-use/RUSTED\ PERSONAL\ USE.ttf");
-}
-
-@font-face {
-    font-family: Anarchaos;
-    src: url("../fonts/anarchaos/Anarchaos.otf");
-}
-
-@font-face {
-    font-family: ASGORE;
-    src: url("../fonts/asgore/ASGORE.otf");
-}
-
-@font-face {
-    font-family: vVWweRraType;
-    src: url("../fonts/vvwwerratype/vVWweRraType!.ttf");
-}
-
 .Funkrocker {
     font-family: "Funkrocker", system-ui;
     font-weight: 400;
@@ -243,235 +223,111 @@
     font-style: normal;
 }
 
-
-/* Body styles */
 body {
-    font-family: Arial, sans-serif;
-    /*background-color: var(--backgroud);*/
-    /*background-image: url('../imgs/make_a_skull_wallpaper_with_rust_palette.png');*/
-    /*background-image: url('../imgs/make_a_skull_wallpaper_with_rust_palette (1).png');*/
-    background-image: url('../imgs/make_a_skull_wallpaper_with_rust_palette_and_a_dark_background.png');
+    background-color: #000;
+    color: #fff;
+    font-family: 'Sixtyfour', serif;
+
+    background-image: url('../imgs/b.jpg');
     background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    color: var(--text);
+    /* Per far sì che l'immagine copra l'intera area */
+    background-position: center;
+    /* Per centrare l'immagine */
+}
+
+/* Per aggiungere un'immagine di sfondo a una specifica sezione */
+.sezione-con-immagine-di-sfondo {
+    background-image: url('percorso_dell_immagine.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+header h1 {
+    font-family: 'Black Metal Logo', cursive;
+    font-size: 48px;
     text-align: center;
+    margin: 0;
 }
 
-/* Header styles */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background-color: var(--primary);
-    z-index: 99;
+nav ul li a {
+    font-family: 'Gothic', sans-serif;
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
 }
 
-.logo h1 {
-    font-size: 24px;
+nav ul li a:hover {
+    color: #666;
 }
 
-header {
-
-    position: fixed;
-    top: 0;
-    width: 100%;
-
+nav {
+    text-align: center;
+    margin-top: 20px;
 }
 
 nav ul {
-    list-style: none;
+    list-style-type: none;
+    padding: 0;
 }
 
 nav ul li {
-    display: inline-block;
-    margin-left: 10px;
+    display: inline;
+    margin-right: 20px;
 }
 
 nav ul li a {
     text-decoration: none;
-    color: var(--text);
-}
-
-/* Hero section styles */
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-}
-
-.hero h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-}
-
-.hero p {
+    color: #fff;
     font-size: 18px;
-    margin-bottom: 40px;
 }
 
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--primary);
-    color: var(--text);
-    text-decoration: none;
-    transition: background-color 0.3s ease;
+nav ul li a:hover {
+    color: #666;
 }
 
-.btn2 {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: var(--primary2);
-    color: var(--text);
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: var(--accent);
-}
-
-.btn2:hover {
-    background-color: var(--primary);
-}
-
-/* Plugins section styles */
-.plugins {
-    text-align: center;
-    padding: 80px 20px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.plugins h2 {
-    font-size: 36px;
-    margin-bottom: 40px;
-}
-
-@keyframes example {
-    from {
-        box-shadow: 1px 1px 2px var(--backgroud), 1px 0 25px var(--primary2), 1px 0 5px var(--accent);
-    }
-
-    to {
-        box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
-    }
-}
-
-@keyframes example2 {
-    from {
-        box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
-    }
-
-    to {
-        box-shadow: 1px 1px 2px var(--backgroud), 1px 0 25px var(--primary2), 1px 0 5px var(--accent);
-    }
-}
-
-.card {
-
-    border-color: var(--accent);
-    margin: 4rem;
-    box-shadow: 1px 1px 2px var(--backgroud), 1px 0 25px var(--primary2), 1px 0 5px var(--accent);
-
-    animation-name: example2;
-    animation-duration: 1s;
-
-}
-
-.card:hover {
-
-    box-shadow: rgba(240, 46, 170, 0.4) 5px 5px, rgba(240, 46, 170, 0.3) 10px 10px, rgba(240, 46, 170, 0.2) 15px 15px, rgba(240, 46, 170, 0.1) 20px 20px, rgba(240, 46, 170, 0.05) 25px 25px;
-
-    animation-name: example;
-    animation-duration: 1s;
-
-}
-
-.card-body {
-
-    background-color: var(--primary2);
-
-}
-
-/*.card img {
-    width: 100%;
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.card h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.card p {
-    font-size: 16px;
-    margin-bottom: 20px;
-}*/
-
-.about {
-
-    margin-bottom: 140px;
-
+h2,
+h3 {
+    font-family: 'Old English', cursive;
 }
 
 .container {
+    padding: 20px 0;
+}
 
-    background-color: rgba(161, 72, 30, 0.5);
-    /*var(--secondary)*/
-    border-radius: 2rem;
+.plugin-card {
+    
+    border: 2px solid #666;
+    /* Definisci lo spessore e il colore del bordo */
+    margin: 1rem;
     padding: 1rem;
-    text-align: center;
-    color: var(--text);
-
-    width: var(--formw);
-    height: var(--formh);
-
-    font-size: x-large;
-    box-shadow: 1px 1px 2px var(--accent), 0 0 25px var(--primary2), 0 0 5px var(--backgroud);
-
-    /*position: fixed;
-    top: calc(50vh - calc(var(--formh)) / 2);
-    left: calc(50vw - calc(var(--formw) / 2));*/
-
-    overflow: auto;
+    box-shadow: 0 0 15px #666;
+    /* Aggiungi un'ombra per creare profondità */
+    background-color: #333;
 
 }
 
+.plugin-card h3 {
+    font-family: 'Frankenweenie', cursive;
+    font-size: 24px;
+}
 
-/* Footer styles */
+.plugin-card p {
+    font-size: 18px;
+}
+
+.plugin-card img {
+    max-width: 100%;
+    /* Imposta la larghezza massima dell'immagine al 100% della larghezza del contenitore */
+    height: auto;
+    /* Assicura che l'altezza dell'immagine si adatti proporzionalmente alla larghezza */
+}
+
 footer {
+    background-color: #222;
+    padding: 20px 0;
     text-align: center;
-    padding: 20px;
-    background-color: var(--accent);
 }
 
 footer p {
-    font-size: 14px;
-}
-
-/* width */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-/* Track */
-::-webkit-scrollbar-track {
-    background: var(--backgroud);
-    border-radius: 3rem;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: var(--primary2);
-    border-radius: 3rem;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: var(--accent);
+    margin: 0;
 }
