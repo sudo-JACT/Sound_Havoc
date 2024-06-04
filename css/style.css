@@ -228,7 +228,7 @@ body {
     color: #fff;
     font-family: 'Sixtyfour', serif;
 
-    background-image: url('../imgs/b.jpg');
+    background-image: url('../imgs/can_you_draw_the_logo_for_a_blackmetal_album_called_Yog-Sothoth.png');
     background-size: cover;
     /* Per far sì che l'immagine copra l'intera area */
     background-position: center;
@@ -287,7 +287,7 @@ nav ul li a:hover {
 
 h2,
 h3 {
-    font-family: 'Old English', cursive;
+    font-family: 'Allerta Stencil', cursive;
 }
 
 .container {
@@ -307,7 +307,7 @@ h3 {
 }
 
 .plugin-card h3 {
-    font-family: 'Frankenweenie', cursive;
+    font-family: 'Rubik Broken Fax', cursive;
     font-size: 24px;
 }
 
@@ -344,4 +344,65 @@ footer p {
     font-family: 'Special Elite', sans-serif;
     font-size: 14px;
     margin: 0;
+}
+
+.btn-github {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.btn-github:hover {
+    background-color: #555;
+}
+
+.btn-bandcamp {
+    background-color: #629aa9;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    font-family: 'Times New Roman', Times, serif;
+    transition: background-color 0.3s;
+}
+
+.btn-bandcamp:hover {
+    background-color: #47818f;
+}
+
+.btn-soundcloud {
+    background-color: #ff5500;
+    color: #fff;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    display: inline-block;
+    transition: background-color 0.3s;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.btn-soundcloud:hover {
+    background-color: #cc4400;
+}
+
+#useful-links {
+
+    align-items: center;
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+
+}
+
+#about p {
+
+    font-family: 'Special Elite', sans-serif;
+    font-size: 16px;
+
 }
