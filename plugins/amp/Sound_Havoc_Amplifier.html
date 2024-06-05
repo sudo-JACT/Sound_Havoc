@@ -19,12 +19,33 @@
         </header>
 
         <section id="about" class="container">
-        <h2 class="abouttext">About the Plugin</h2>
-        <p class="abouttext">
-        This plugin changes the amplitude of the input audio signal. It uses a simple amplification algorithm that increases or decreases the signal level according to the specified parameters. The user can adjust the gain (gain) parameter to increase or decrease the amplitude of the input signal. This plugin can be used to increase the volume of an audio signal without unwanted distortion.
-        </p>
-        </section>
 
+            <h2>About the Plugin</h2>
+            <p class="abouttext">
+            This plugin changes the amplitude of the input audio signal. It uses a simple amplification algorithm that increases or decreases the signal level according to the specified parameters. The user can adjust the gain parameter to increase or decrease the amplitude of the input signal. This plugin can be used to increase the volume of an audio signal without unwanted distortion.
+            </p>
+
+            <h2>Features</h2>
+            <ul class="abouttext">
+                <li class="abouttext">Real-time amplification</li>
+                <li class="abouttext">Adjustable gain</li>
+                <li class="abouttext">Compatible with various DAWs</li>
+            </ul>
+
+            <h2>Installation</h2>
+            <p class="abouttext">First download the repo</p>
+            <div class="code">git clone https://github.com/sudo-JACT/Sound_Havoc.git</div>
+            
+            <p class="abouttext">then cd in the repo directory</p>
+            <div class="code">cd Sound_Havoc</div>
+
+            <p class="abouttext">now you have to compile the plugins, cd in the plugin directory, cd another time in the src directory, then using cmake make the Makefile and then compile the plugin with the makefile</p>
+            <div class="code">cmake CMakeLists.txt && make</div>
+
+            <p class="abouttext">after that you have to move the directory "plugin_name.lv2" in your .lv2 directory</p>
+            <div class="code">mv ../plugin_name.lv2 /home/username/.lv2</div>
+
+        </section>
         
 
         <footer>
@@ -32,7 +53,7 @@
             <section id="useful-links" class="container">
             <!--<h2>Useful Links</h2>-->
             <ul>
-                <a href="https://github.com/sudo-JACT/Sound_Havoc" class="btn btn-github">
+                <a href="https://github.com/sudo-JACT/Sound_Havoc" target="_blank" class="btn btn-github">
                 <img
                     src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
                     alt="GitHub Logo"
@@ -42,7 +63,7 @@
                 GitHub
                 </a>
 
-                <a href="https://writhingmisery.bandcamp.com/" class="btn btn-bandcamp">
+                <a href="https://writhingmisery.bandcamp.com/" target="_blank" class="btn btn-bandcamp">
                 <img
                     src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Bandcamp-button-circle-green.svg"
                     alt="Bandcamp Logo"
@@ -52,7 +73,7 @@
                 Bandcamp
                 </a>
 
-                <a href="https://on.soundcloud.com/66zeHMChqdZscscD7" class="btn btn-soundcloud">
+                <a href="https://on.soundcloud.com/66zeHMChqdZscscD7" target="_blank" class="btn btn-soundcloud">
                 <img
                     src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Antu_soundcloud.svg"
                     alt="SoundCloud Logo"

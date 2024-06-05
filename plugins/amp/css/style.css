@@ -37,6 +37,7 @@ header h1 {
 .abouttext {
 
     color: #fff;
+    font-family: "Special Elite", sans-serif;
 
 }
 
@@ -96,11 +97,34 @@ button img {
     margin-right: 0.5em;
 }
 
-footer {
+/*footer {
     position: fixed;
     bottom: 0;
     width: 100%;
-    max-height: fit-content;
+}
+
+@media only screen and (max-width: 768px) {
+    
+    footer {
+        position: static;
+        bottom: 0;
+        width: 100%;
+    }
+}*/
+
+.code {
+
+    background-color: #444;
+    max-width: fit-content;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 1rem;
+    /*border-radius: 1rem;*/
+    text-align: center;
+    border: 1px solid;
+    border-color: #fff;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+    
 }
 
 /*#useful-links {
