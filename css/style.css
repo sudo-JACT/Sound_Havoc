@@ -302,44 +302,63 @@ h3 {
     padding: 20px 0;
 }
 
-.plugin-card {
-    
-    border: 2px solid #666;
-    /* Definisci lo spessore e il colore del bordo */
-    margin: 1rem;
-    padding: 1rem;
-    box-shadow: 0 0 15px #666;
-    /* Aggiungi un'ombra per creare profondità */
-    background-color: #333;
+#plugins {
+
+    text-align: center;
 
 }
 
-.plugin-card h3 {
-    font-family: 'Rubik Broken Fax', cursive;
-    font-size: 24px;
+/* CSS Animations for Cards */
+.card {
+    position: relative;
+    background-color: #1f1f1f;
+    border: 1px solid #555;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: inline-block;
+    margin-bottom: 2rem;
 }
 
-.plugin-card p {
-    font-size: 18px;
+.card:hover {
+    /*transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);*/
+    transform: scale(1.1) rotate(2deg);
+    box-shadow: 0 0 20px 10px rgba(68, 68, 68, 0.7);
+    background-color: #444444;
+
+    margin: 0.7rem;
 }
 
-.plugin-card img {
-    max-width: 100%;
-    /* Imposta la larghezza massima dell'immagine al 100% della larghezza del contenitore */
+.card img {
+    width: 100%;
     height: auto;
-    /* Assicura che l'altezza dell'immagine si adatti proporzionalmente alla larghezza */
+    max-width: 300px;
+    border-radius: 10px 10px 0 0;
+    transition: transform 0.3s ease;
 }
 
-.plugin-card h3 {
-
-    padding-top: 1rem;
-    font-family: 'Rubik Maze', cursive;
-
+.card img:hover {
+    transform: scale(1.05);
 }
 
-.plugin-card p {
-    font-family: 'Special Elite', sans-serif;
-    font-size: 16px;
+.card-content {
+    padding: 20px;
+    color: #e0e0e0;
+    font-family: "Workbench", sans-serif;
+}
+
+.card-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: #f0f0f0;
+    font-family: "Special Elite", sans-serif;
+}
+
+.card-description {
+    font-size: 1em;
+    color: #c0c0c0;
+    font-family: "Special Elite", sans-serif;
 }
 
 footer {
@@ -354,7 +373,7 @@ footer p {
     margin: 0;
 }
 
-.btn-github {
+/*.btn-github {
     background-color: #333;
     color: #fff;
     padding: 10px 20px;
@@ -397,7 +416,7 @@ footer p {
 
 .btn-soundcloud:hover {
     background-color: #cc4400;
-}
+}*/
 
 #useful-links {
 
@@ -415,30 +434,49 @@ footer p {
 
 }
 
-.plugin-card {
-    border: 2px solid var(--secondary);
-    margin: 2rem;
-    padding: 1rem;
-    box-shadow: 0 0 15px var(--accent);
-    transition: transform 0.3s, box-shadow 0.3s;
-    background-color: var(--background);
-    animation: fadeInUp 1s ease forwards;
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #ffffff;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    font-family: 'Times New Roman', Times, serif;
 }
 
-@keyframes fadeInUp {
-    0% {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.btn img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
 }
 
-.plugin-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 25px var(--secondary);
-    animation: none;
+.btn-github {
+    background-color: #333333;
+}
+
+.btn-github:hover {
+    background-color: #24292e;
+    box-shadow: 0 0 10px 5px rgba(36, 41, 46, 0.5);
+}
+
+.btn-bandcamp {
+    background-color: #619aa0;
+}
+
+.btn-bandcamp:hover {
+    background-color: #468387;
+    box-shadow: 0 0 10px 5px rgba(70, 131, 135, 0.5);
+}
+
+.btn-soundcloud {
+    background-color: #ff8800;
+}
+
+.btn-soundcloud:hover {
+    background-color: #e57500;
+    box-shadow: 0 0 10px 5px rgba(229, 117, 0, 0.5);
 }

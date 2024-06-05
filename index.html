@@ -1,125 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SOUND HAVOC</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="./css/style.css" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="./imgs/favicon.ico">
-    
-</head>
-<body>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="./css/style.css" rel="stylesheet" />
+    <link rel="icon" type="image/x-icon" href="./imgs/favicon.ico" />
+  </head>
+  <body>
     <header>
-        <div class="container">
-            <h1>SOUND HAVOC</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#plugins">Plugins</a></li>
-                    <li><a href="#useful-links">Useful Links</a></li>
-                </ul>
-            </nav>
-        </div>
+      <div class="container">
+        <h1>SOUND HAVOC</h1>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#plugins">Plugins</a></li>
+            <li><a href="#useful-links">Useful Links</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <section id="about" class="container">
-        <h2>About Sound Havoc</h2>
-        <p>
-            Sound Havoc is the culmination of my passion for music and computer science. Even as I write this, I'm listening to music (<a href="https://open.spotify.com/intl-it/track/1gdNdUdDmVpwVV2c6LgOIW?si=fc5f5e30b3e94b9a" target="_blank">Thank You Again, by Spite</a>). This project represents the apex of their union: on one side, the creativity of music, on the other, the ingenuity of computer science.
-        </p>
-        <h3>Features of Sound Havoc</h3>
-        <p>
-            Developed using the C++ programming language and LV2 interface integration, Sound Havoc allows musicians to experiment and customize their sound in a creative and cutting-edge way. With Sound Havoc, users can access a wide range of effects such as reverbs, distortions, chorus, flanger, delay, and many more. These effects can be applied in real-time during musical performances or recording, allowing musicians to shape their sound according to their preferences and the musical genre they are playing.
-        </p>
-        <p>
-            The user interface of Sound Havoc is intuitive and easy to use, allowing users to adjust effect parameters in real-time and create unique combinations of sounds. Additionally, thanks to integration with the LV2 interface, Sound Havoc plugins can be used in a variety of music production software, ensuring compatibility with different platforms and facilitating integration into users' workflows.
-        </p>
-        <h3>Open-Source and Collaboration</h3>
-        <p>
-            One truly unique aspect of this project is its open-source nature. I am a passionate advocate for sharing knowledge and collaboration, so I decided to make the source code of Sound Havoc publicly available. This means that developers and music enthusiasts can contribute to the growth and evolution of Sound Havoc by making changes, adding new effects, or fixing any bugs. This collaborative approach allows for the creation of an active and dynamic community, where ideas can be exchanged and improved to provide an increasingly rich musical experience.
-        </p>
-        <p>
-            The open-source nature of Sound Havoc allows users to customize the software interface according to their preferences. They can tailor the appearance and organization of effect controls to build an optimized and intuitive working environment. This flexibility enables each user to create a unique and personalized musical experience.
-        </p>
-        <h3>Future Developments</h3>
-        <p>
-            In addition to the core features, I am also working to implement new effects and improvements. My vision for the future of Sound Havoc includes adding innovative and original effects that can inspire musicians' creativity. I am also exploring the possibility of integrating Sound Havoc with other music software and platforms to offer an even more comprehensive experience.
-        </p>
-        <h3>Conclusion</h3>
-        <p>
-            Sound Havoc represents the culmination of my passion for music and computer science, allowing musicians to explore new sonic possibilities and customize their sound in a unique way. I am excited to share this project with the music community and to continue developing it to offer new features and improvements.
-        </p>
+      <h2>About Sound Havoc</h2>
+      <p>
+        Sound Havoc is the culmination of my passion for music and computer
+        science. Even as I write this, I'm listening to music (<a
+          href="https://open.spotify.com/intl-it/track/1gdNdUdDmVpwVV2c6LgOIW?si=fc5f5e30b3e94b9a"
+          target="_blank"
+          >Thank You Again, by Spite</a
+        >). This project represents the apex of their union: on one side, the
+        creativity of music, on the other, the ingenuity of computer science.
+      </p>
+      <h3>Features of Sound Havoc</h3>
+      <p>
+        Developed using the C++ programming language and LV2 interface
+        integration, Sound Havoc allows musicians to experiment and customize
+        their sound in a creative and cutting-edge way. With Sound Havoc, users
+        can access a wide range of effects such as reverbs, distortions, chorus,
+        flanger, delay, and many more. These effects can be applied in real-time
+        during musical performances or recording, allowing musicians to shape
+        their sound according to their preferences and the musical genre they
+        are playing.
+      </p>
+      <p>
+        The user interface of Sound Havoc is intuitive and easy to use, allowing
+        users to adjust effect parameters in real-time and create unique
+        combinations of sounds. Additionally, thanks to integration with the LV2
+        interface, Sound Havoc plugins can be used in a variety of music
+        production software, ensuring compatibility with different platforms and
+        facilitating integration into users' workflows.
+      </p>
+      <h3>Open-Source and Collaboration</h3>
+      <p>
+        One truly unique aspect of this project is its open-source nature. I am
+        a passionate advocate for sharing knowledge and collaboration, so I
+        decided to make the source code of Sound Havoc publicly available. This
+        means that developers and music enthusiasts can contribute to the growth
+        and evolution of Sound Havoc by making changes, adding new effects, or
+        fixing any bugs. This collaborative approach allows for the creation of
+        an active and dynamic community, where ideas can be exchanged and
+        improved to provide an increasingly rich musical experience.
+      </p>
+      <p>
+        The open-source nature of Sound Havoc allows users to customize the
+        software interface according to their preferences. They can tailor the
+        appearance and organization of effect controls to build an optimized and
+        intuitive working environment. This flexibility enables each user to
+        create a unique and personalized musical experience.
+      </p>
+      <h3>Future Developments</h3>
+      <p>
+        In addition to the core features, I am also working to implement new
+        effects and improvements. My vision for the future of Sound Havoc
+        includes adding innovative and original effects that can inspire
+        musicians' creativity. I am also exploring the possibility of
+        integrating Sound Havoc with other music software and platforms to offer
+        an even more comprehensive experience.
+      </p>
+      <h3>Conclusion</h3>
+      <p>
+        Sound Havoc represents the culmination of my passion for music and
+        computer science, allowing musicians to explore new sonic possibilities
+        and customize their sound in a unique way. I am excited to share this
+        project with the music community and to continue developing it to offer
+        new features and improvements.
+      </p>
     </section>
 
     <section id="plugins" class="container">
-        <h2>Our Plugins</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="plugin-card">
+    
+        <h2>Plugins</h2>
+
+        <a href="./plugins/Sound_Havoc_Amplifier.html" target="_blank">
+        
+            <div class="card">
+                <div class="card-content">
+                    <h3 class="card-title">Plugin 1</h3>
+                    <p class="card-description">Descrizione del Plugin 1...</p>
                     <img src="./imgs/make_a_skull_wallpaper_with_rust_palette (1).png" alt="Plugin 1">
-                    <h3>DarkReaper Distortion</h3>
-                    <p>Add a layer of darkness to your guitar riffs with the DarkReaper Distortion plugin. This plugin features a wide range of distortion effects inspired by the raw sound of black metal.</p>
-                    <a href="#" class="btn btn-light">Learn More</a>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="plugin-card">
-                    <img src="./imgs/make_a_skull_wallpaper_with_rust_palette.png" alt="Plugin 2">
-                    <h3>Nightmare Delay</h3>
-                    <p>Take your listeners on a journey through the abyss with the Nightmare Delay plugin. This plugin offers haunting delay effects that will immerse your audience in a world of darkness.</p>
-                    <a href="#" class="btn btn-light">Learn More</a>
+
+        </a>
+
+        <a href="./plugins/Sound_Havoc_Amplifier.html" target="_blank">
+        
+            <div class="card">
+                <div class="card-content">
+                    <h3 class="card-title">Plugin 1</h3>
+                    <p class="card-description">Descrizione del Plugin 1...</p>
+                    <img src="./imgs/make_a_skull_wallpaper_with_rust_palette (1).png" alt="Plugin 1">
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="plugin-card">
-                    <img src="./imgs/make_a_skull_wallpaper_with_rust_palette_and_a_dark_background.png" alt="Plugin 3">
-                    <h3>BlackScream Reverb</h3>
-                    <p>Elevate your vocals to new heights of darkness with the BlackScream Reverb plugin. This plugin features eerie reverb effects that will give your vocals a sinister edge.</p>
-                    <a href="#" class="btn btn-light">Learn More</a>
+
+        </a>
+
+        <a href="./plugins/Sound_Havoc_Amplifier.html" target="_blank">
+        
+            <div class="card">
+                <div class="card-content">
+                    <h3 class="card-title">Plugin 1</h3>
+                    <p class="card-description">Descrizione del Plugin 1...</p>
+                    <img src="./imgs/make_a_skull_wallpaper_with_rust_palette (1).png" alt="Plugin 1">
                 </div>
             </div>
-        </div>
+
+        </a>
+
+        <a href="./plugins/Sound_Havoc_Amplifier.html" target="_blank">
+        
+            <div class="card">
+                <div class="card-content">
+                    <h3 class="card-title">Plugin 1</h3>
+                    <p class="card-description">Descrizione del Plugin 1...</p>
+                    <img src="./imgs/make_a_skull_wallpaper_with_rust_palette (1).png" alt="Plugin 1">
+                </div>
+            </div>
+
+        </a>
+
+        <a href="./plugins/Sound_Havoc_Amplifier.html" target="_blank">
+        
+            <div class="card">
+                <div class="card-content">
+                    <h3 class="card-title">Plugin 1</h3>
+                    <p class="card-description">Descrizione del Plugin 1...</p>
+                    <img src="./imgs/make_a_skull_wallpaper_with_rust_palette (1).png" alt="Plugin 1">
+                </div>
+            </div>
+
+        </a>
+
+        <a href="./plugins/Sound_Havoc_Amplifier.html" target="_blank">
+        
+            <div class="card">
+                <div class="card-content">
+                    <h3 class="card-title">Plugin 1</h3>
+                    <p class="card-description">Descrizione del Plugin 1...</p>
+                    <img src="./imgs/make_a_skull_wallpaper_with_rust_palette (1).png" alt="Plugin 1">
+                </div>
+            </div>
+
+        </a>
+
     </section>
 
     <section id="useful-links" class="container">
-        <!--<h2>Useful Links</h2>-->
-        <ul>
-            <a href="https://github.com/sudo-JACT/Sound_Havoc" class="btn-github">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub Logo" height="24" width="24">
-                GitHub
-            </a>
-            
-            <a href="https://writhingmisery.bandcamp.com/" class="btn-bandcamp">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Bandcamp-button-circle-green.svg" alt="Bandcamp Logo" height="24" width="24">
-                Bandcamp
-            </a>
-            
-            <a href="https://on.soundcloud.com/66zeHMChqdZscscD7" class="btn-soundcloud">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Antu_soundcloud.svg" alt="SoundCloud Logo" height="24" width="24">
-                SoundCloud
-            </a>
-            
-            <script type='text/javascript' src='https://storage.ko-fi.com/cdn/widget/Widget_2.js'></script><script type='text/javascript'>kofiwidget2.init('Support Me on Ko-fi', '#666', 'Y8Y0X64ZC');kofiwidget2.draw();</script> 
-        </ul>
+      <!--<h2>Useful Links</h2>-->
+      <ul>
+        <a href="https://github.com/sudo-JACT/Sound_Havoc" class="btn btn-github">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+            alt="GitHub Logo"
+            height="24"
+            width="24"
+          />
+          GitHub
+        </a>
+
+        <a href="https://writhingmisery.bandcamp.com/" class="btn btn-bandcamp">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Bandcamp-button-circle-green.svg"
+            alt="Bandcamp Logo"
+            height="24"
+            width="24"
+          />
+          Bandcamp
+        </a>
+
+        <a href="https://on.soundcloud.com/66zeHMChqdZscscD7" class="btn btn-soundcloud">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/a/a2/Antu_soundcloud.svg"
+            alt="SoundCloud Logo"
+            height="24"
+            width="24"
+          />
+          SoundCloud
+        </a>
+
+        <script
+          type="text/javascript"
+          src="https://storage.ko-fi.com/cdn/widget/Widget_2.js"
+        ></script>
+        <script type="text/javascript">
+          kofiwidget2.init("Support Me on Ko-fi", "#666", "Y8Y0X64ZC");
+          kofiwidget2.draw();
+        </script>
+      </ul>
     </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2024 SOUND HAVOC. All rights reserved.</p>
-        </div>
+      <div class="container">
+        <p>&copy; 2024 SOUND HAVOC. All rights reserved.</p>
+      </div>
     </footer>
 
-    <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+    <script src="https://storage.ko-fi.com/cdn/scripts/overlay-widget.js"></script>
     <script>
-    kofiWidgetOverlay.draw('writhing_misery', {
-        'type': 'floating-chat',
-        'floating-chat.donateButton.text': 'Donate',
-        'floating-chat.donateButton.background-color': '#00b9fe',
-        'floating-chat.donateButton.text-color': '#fff'
-    });
+      kofiWidgetOverlay.draw("writhing_misery", {
+        type: "floating-chat",
+        "floating-chat.donateButton.text": "Donate",
+        "floating-chat.donateButton.background-color": "#00b9fe",
+        "floating-chat.donateButton.text-color": "#fff",
+      });
     </script>
-    
-</body>
+  </body>
 </html>
