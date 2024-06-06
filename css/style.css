@@ -446,6 +446,12 @@ footer p {
     color: #ffffff;
     transition: background-color 0.3s, box-shadow 0.3s;
     font-family: 'Times New Roman', Times, serif;
+    background-color: #333333;   
+}
+
+.btn:hover {
+    background-color: #24292e;
+    box-shadow: 0 0 10px 5px rgba(36, 41, 46, 0.5);
 }
 
 .btn img {
@@ -480,3 +486,18 @@ footer p {
     background-color: #e57500;
     box-shadow: 0 0 10px 5px rgba(229, 117, 0, 0.5);
 }
+
+.sty {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/*@media only screen and (max-width: 768px) {
+
+    .sty {
+        position: static;
+        bottom: 0;
+        width: 100%;
+    }
+}*/
