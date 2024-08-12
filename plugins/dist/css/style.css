@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sixtyfour&family=Workbench&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&family=Sixtyfour&family=Workbench&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Lines&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Broken+Fax&family=Rubik+Lines&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Glitch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Rubik+Glitch&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Aboreto&family=Rubik+Glitch&family=Rubik+Maze&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Extended+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+39+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Barcode+128+Text&family=Libre+Barcode+39+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=Libre+Barcode+128+Text&family=Libre+Barcode+39+Text&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Special+Elite&display=swap');
+
+body {
+    font-family: 'Sixtyfour', sans-serif;
+    background-image: url('../../../imgs/can_you_draw_the_logo_for_a_blackmetal_album_called_Yog-Sothoth.png');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    /*text-align: center;*/
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: 2em 0;
+    /*background: rgba(0, 0, 0, 0.7);*/
+}
+
+header h1 {
+
+    color: #fff;
+
+}
+
+.abouttext {
+
+    color: #fff;
+    font-family: "Special Elite", sans-serif;
+
+}
+
+main {
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+}
+
+.card {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #444;
+    border-radius: 10px;
+    padding: 1em 2em;
+    margin: 1em;
+    max-width: 400px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.5);
+}
+
+/*footer {
+    display: flex;
+    justify-content: center;
+    padding: 1em;
+    background: rgba(0, 0, 0, 0.7);
+}*/
+
+button {
+    background: #222;
+    border: none;
+    padding: 0.5em 1em;
+    margin: 0.5em;
+    color: #fff;
+    font-family: 'Sixtyfour', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+}
+
+button:hover {
+    background: #444;
+    transform: scale(1.05);
+}
+
+button img {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5em;
+}
+
+
+.code {
+
+    background-color: #444;
+    max-width: fit-content;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 1rem;
+    /*border-radius: 1rem;*/
+    text-align: center;
+    border: 1px solid;
+    border-color: #fff;
+    margin-bottom: 1rem;
+    margin-top: 0.5rem;
+
+}
+
+/*#useful-links {
+
+    position: fixed;
+    bottom: 8%;
+    width: 100%;
+
+}*/
+
+  .audio-player {
+      display: flex;
+      align-items: center;
+      background: #000;
+      /* Sfondo nero */
+      padding: 10px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8);
+      border: 2px solid #444;
+      /* Bordo grigio scuro */
+  }
+
+  #playPauseBtn {
+      background-color: #111;
+      /* Colore del bottone scuro */
+      border: 2px solid #666;
+      /* Bordi metallici scuri */
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 16px;
+      margin: 0 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s, transform 0.3s;
+      font-family: 'Metal Mania', cursive;
+      /* Font in stile metal */
+  }
+
+  #playPauseBtn:hover {
+      background-color: #333;
+      transform: scale(1.1);
+  }
+
+  #progressBarContainer {
+      width: 100%;
+      background: #111;
+      /* Sfondo della barra di progresso scuro */
+      border: 2px solid #666;
+      /* Bordi metallici scuri */
+      border-radius: 5px;
+      overflow: hidden;
+      margin: 0 10px;
+      height: 10px;
+      position: relative;
+  }
+
+  #progressBar {
+      width: 0;
+      height: 100%;
+      background: linear-gradient(90deg, #555, #222);
+      /* Aspetto metallico scuro */
+  }
+
+  #volumeControl {
+      -webkit-appearance: none;
+      /* Rimuove lo stile predefinito del browser */
+      width: 100px;
+      background: #111;
+      /* Sfondo dello slider scuro */
+      border: 2px solid #666;
+      /* Bordi metallici scuri */
+      border-radius: 5px;
+      height: 10px;
+      margin-left: 10px;
+      cursor: pointer;
+  }
+
+  #volumeControl::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      background: #555;
+      /* Colore del cursore scuro */
+      border-radius: 50%;
+      border: 2px solid #666;
+  }
+
+  #volumeControl::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: #555;
+      border-radius: 50%;
+      border: 2px solid #666;
+  }
