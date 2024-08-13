@@ -363,14 +363,14 @@ static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sa
 
         WaveSynth *ws = new WaveSynth(sample_rate, features);
 
-    }catch(const __throw_invalid_argument &e) {
-
-        cerr << e.what() << endl;
-        return nullptr;
-    
     }catch(const bad_alloc& b) {
 
         cerr << "Error while allocating memory" << endl;
+        return nullptr;
+    
+    }catch(const exception& e) {
+
+        cerr << e.what() << endl;
         return nullptr;
     
     }
