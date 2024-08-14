@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <cmath>
 #include <lv2.h>
+#include <array>
 #include <stdexcept>
 #include <new>
 #include <lv2/atom/atom.h>
@@ -19,6 +20,69 @@
 #define u64 uint64_t
 
 using namespace std;
+
+template <class T>
+class LinearFader {
+
+    private:
+        T destination_;
+        u32 distance_;
+        T value_;
+
+    public:
+        LinearFader(const T destination){
+
+            destination_ = destination;
+            distance_ = 0;
+            value_ = destination;
+
+        }
+
+        void set(const T destination, u32 distance){
+
+            destination_ = destination;
+            distance_ = distance;
+
+            if (distance == 0) {
+
+                value_ = destination;
+            
+            }
+            
+
+        }
+
+        T get() const{
+
+            return value_;
+
+        }
+
+        void proceed(){
+
+            if (distance_ == 0) {
+
+                value_ = destination_;
+            
+            }else {
+
+                value_ += (destination_ - value_) * (1.0 / (static_cast<double> (distance_)))
+                distance_ -= 1;
+
+            }
+            
+
+        }
+
+};
+
+
+template <class T>
+T limit(const T x, const T min, const T max){
+
+    return (x < min ? min : (x > max ? max : x))
+
+}
 
 enum ADSRPorts {
     ADSR_WAVEFORM = 0,
@@ -53,6 +117,17 @@ struct Envelope {
     float sustain;
     double release;
 };
+
+constexpr array<pair<float, float>, ADSR_NR> adsrLimit = {{
+
+    {0.0f, 4.0f},
+    {0.001f, 4.0f},
+    {0.001f, 4.0f},
+    {0.0f, 1.0f},
+    {0.001f, 4.0f},
+    {0.0f, 1.0f},
+
+}};
 
 class Key {
 
@@ -117,7 +192,7 @@ class Key {
             position = 0;
             start_lever = 0;
             rate = rt;
-            freq = pow(2, (double (note) - 69) / 12) * 440;
+            freq = pow(2, (static_cast<double> (note) - 69) / 12) * 440;
             time = 0;
 
         }
@@ -129,7 +204,7 @@ class Key {
             velocity = v;
             envelope = e;
             status = KEY_PRESSED;
-            freq = pow(2, (double (note) - 69) / 12) * 440;
+            freq = pow(2, (static_cast<double> (note) - 69) / 12) * 440;
             time = 0;
 
         }
@@ -156,7 +231,7 @@ class Key {
 
         float get() {
 
-            float synth_note = adsr() * sin(2 * M_PI * position) * (float(velocity) / 127);
+            float synth_note = adsr() * sin(2 * M_PI * position) * (static_cast<float> (velocity) / 127);
 
             return synth_note;
 
@@ -184,8 +259,10 @@ class WaveSynth {
 
         const LV2_Atom_Sequence* midi_in_ptr;
         float* audio_out_ptr;
-        const float* adsr_ptr[ADSR_NR];
+        array<const float*, ADSR_NR> adsr_ptr;
+        array<float, ADSR_NR> adsr;
         double rate;
+        LinearFader<float> controlLevel;
         double position;
         LV2_URID_Map* map;
         Urids urids;
@@ -195,7 +272,7 @@ class WaveSynth {
 
             for(u32 i=start; i < end; i++) {
 
-                audio_out_ptr[i] = key->get() * *adsr_ptr[ADSR_LEVEL];
+                audio_out_ptr[i] = key->get() * adsr[ADSR_LEVEL];
                 key->proceed();
 
             }
@@ -210,17 +287,15 @@ class WaveSynth {
             midi_in_ptr = static_cast<const LV2_Atom_Sequence*> (nullptr);
             audio_out_ptr = static_cast<float*> (nullptr);
 
-            for (u32 i=0; i < ADSR_NR; i++) {
-
-                adsr_ptr[i] = static_cast<float*> (nullptr);
-            
-            }
+            adsr_ptr.fill(nullptr);
+            adsr.fill(0.0f);
             
             rate = sample_rate;
             position = 0.0;
             key = new Key(rate);
 
             map = static_cast<LV2_URID_Map*> (nullptr);
+            controlLevel(0.0f);
 
             const char *missing = lv2_features_query(
                 features,
@@ -291,6 +366,17 @@ class WaveSynth {
             
             }
 
+            for (u32 i=0; i < ADSR_NR; i++) {
+
+                if (*adsr_ptr[i] != adsr[i]) {
+                    
+                    adsr[i] = limit<float>(*adsr_ptr[i], adsrLimit[i].first, adsrLimit[i].second);
+                
+                }
+                
+            
+            }
+
             u32 last_frame = 0;
             LV2_ATOM_SEQUENCE_FOREACH(midi_in_ptr, ev) {
 
@@ -300,7 +386,7 @@ class WaveSynth {
 
                 if (ev->body.type = urids.midi_MidiEvent) {
 
-                    const u8* const msg = (const u8*) (ev + 1);
+                    const u8* const msg = reinterpret_cast<const u8*> (ev + 1);
 
                     const u8 type = lv2_midi_message_type(msg);
 
@@ -308,7 +394,7 @@ class WaveSynth {
 
                         case LV2_MIDI_MSG_NOTE_ON:
                             
-                            key->press(msg[1], msg[2], {*adsr_ptr[ADSR_ATTACK], *adsr_ptr[ADSR_DECAY], *adsr_ptr[ADSR_SUSTAIN], *adsr_ptr[ADSR_RELEASE]});
+                            key->press(msg[1], msg[2], {adsr[ADSR_ATTACK], adsr[ADSR_DECAY], adsr[ADSR_SUSTAIN], adsr[ADSR_RELEASE]});
 
                             break;
 
@@ -357,7 +443,7 @@ class WaveSynth {
 static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sample_rate, const char *bundle_path, const LV2_Feature *const *features) {
 
 
-    WaveSynth* ws =  nullptr;
+    WaveSynth* ws = nullptr;
 
     try {
 
