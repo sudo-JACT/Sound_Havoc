@@ -357,7 +357,7 @@ class WaveSynth {
 static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sample_rate, const char *bundle_path, const LV2_Feature *const *features) {
 
 
-    WaveSynth* ws = static_cast<WaveSynth*> (nullptr);
+    WaveSynth* ws =  nullptr;
 
     try {
 
