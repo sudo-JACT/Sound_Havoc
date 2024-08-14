@@ -230,7 +230,7 @@ class WaveSynth {
 
             if (missing) {
 
-                __throw_invalid_argument("Error while instantiating the plugin");
+                invalid_argument("Feature not provided. Can't instantiate the pluging");
             
             }
 
@@ -465,7 +465,7 @@ static LV2_Descriptor const descriptor = {
 };
 
 /*interface*/
-extern "C" LV2_Descriptor const *lv2_descriptor(uint32_t index) {
+LV2_Descriptor const *lv2_descriptor(uint32_t index) {
 
     if(index == 0) {
 
