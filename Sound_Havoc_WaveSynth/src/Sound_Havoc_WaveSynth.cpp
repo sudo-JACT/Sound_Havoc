@@ -33,6 +33,13 @@ class LinearFader {
         T value_;
 
     public:
+
+        LinearFader() {
+
+            //pass
+
+        }
+
         LinearFader(const T destination){
 
             destination_ = destination;
@@ -69,7 +76,7 @@ class LinearFader {
             
             }else {
 
-                value_ += (destination_ - value_) * (1.0 / (static_cast<double> (distance_)))
+                value_ += (destination_ - value_) * (1.0 / (static_cast<double> (distance_)));
                 distance_ -= 1;
 
             }
@@ -83,7 +90,7 @@ class LinearFader {
 template <class T>
 T limit(const T x, const T min, const T max){
 
-    return (x < min ? min : (x > max ? max : x))
+    return (x < min ? min : (x > max ? max : x));
 
 }
 
@@ -221,7 +228,7 @@ class Key {
                     break;
 
                 case WAVEFORM_NOISE:
-                    return dist = uniform_real_distribution(rnd);
+                    return dist(rnd);
                     break;
 
                 default:
@@ -245,10 +252,10 @@ class Key {
             rate = rt;
             freq = pow(2, (static_cast<double> (note) - 69) / 12) * 440;
             time = 0.0f;
-            feader = LinearFader(1.0f);
+            LinearFader feader(1.0f);
             waveform = Waveform(WAVEFORM_SINE);
-            rnd = minstd_rand(std::time (0));
-            dist = uniform_real_distribution(-1.0f, 1.0f);
+            minstd_rand rnd(time_t (0));
+            uniform_real_distribution<float> dist(-1.0f, 1.0f);
 
         }
 
@@ -365,7 +372,7 @@ class WaveSynth {
             key = new Key(rate);
 
             map = static_cast<LV2_URID_Map*> (nullptr);
-            controlLevel = LinearFader(0.0f);
+            LinearFader controlLevel(0.0f);
 
             const char *missing = lv2_features_query(
                 features,
