@@ -7,6 +7,9 @@
 #include <lv2.h>
 #include <array>
 #include <stdexcept>
+#include <random>
+#include <ctime>
+#include <utility>
 #include <new>
 #include <lv2/atom/atom.h>
 #include <lv2/atom/util.h>
@@ -84,6 +87,16 @@ T limit(const T x, const T min, const T max){
 
 }
 
+enum Waveform {
+
+    WAVEFORM_SINE = 0,
+    WAVEFORM_TRIANGLE = 1,
+    WAVEFORM_SQUARE = 2,
+    WAVEFORM_SAW = 3,
+    WAVEFORM_NOISE = 4,
+    WAVEFORM_NR = 5,
+};
+
 enum ADSRPorts {
     ADSR_WAVEFORM = 0,
     ADSR_ATTACK = 1,
@@ -142,6 +155,10 @@ class Key {
         float start_lever;
         double freq;
         double time;
+        LinearFader<float> feader;
+        Waveform waveform;
+        minstd_rand rnd;
+        uniform_real_distribution<float> dist;
 
         float adsr() {
 
@@ -181,6 +198,40 @@ class Key {
 
         }
 
+        inline float synth() {
+
+            const float p = fmod(position, 1.0);
+
+            switch (waveform) {
+
+                case WAVEFORM_SINE:
+                    return sin(2.0 * M_PI * position);
+                    break;
+
+                case WAVEFORM_TRIANGLE:
+                    return (p < 0.25f ? (4.0f * p) : (p < 0.75f ? (1.0f - (4.0f * (p - 0.25f))) : (-1.0f + (4.0f * (p - 0.75f)))));
+                    break;
+
+                case WAVEFORM_SQUARE:
+                    return (p < 0.5f ? (1.0f) : (-1.0f));
+                    break;
+
+                case WAVEFORM_SAW:
+                    return (2.0f * p - 1.0f);
+                    break;
+
+                case WAVEFORM_NOISE:
+                    return dist = uniform_real_distribution(rnd);
+                    break;
+
+                default:
+                    return 0.0f;
+                    break;
+
+            }
+
+        }
+
     public:
 
         Key(const double rt) {
@@ -193,11 +244,15 @@ class Key {
             start_lever = 0;
             rate = rt;
             freq = pow(2, (static_cast<double> (note) - 69) / 12) * 440;
-            time = 0;
+            time = 0.0f;
+            feader = LinearFader(1.0f);
+            waveform = Waveform(WAVEFORM_SINE);
+            rnd = minstd_rand(std::time (0));
+            dist = uniform_real_distribution(-1.0f, 1.0f);
 
         }
 
-        void press(u8 nt, const u8 v, const Envelope e) {
+        void press(const Waveform wf, u8 nt, const u8 v, const Envelope e) {
 
             start_lever = adsr();
             note = nt;
@@ -206,6 +261,8 @@ class Key {
             status = KEY_PRESSED;
             freq = pow(2, (static_cast<double> (note) - 69) / 12) * 440;
             time = 0;
+            feader.set(1.0f, 0.0);
+            waveform = wf;
 
         }
 
@@ -221,6 +278,18 @@ class Key {
 
         }
 
+        void release() {
+
+            release(note, velocity);
+
+        }
+
+        void mute() {
+
+            feader.set(.0f, (0.01 * rate));
+
+        }
+
         void off() {
 
             position = 0;
@@ -231,7 +300,7 @@ class Key {
 
         float get() {
 
-            float synth_note = adsr() * sin(2 * M_PI * position) * (static_cast<float> (velocity) / 127);
+            float synth_note = adsr() * synth() * sin(2 * M_PI * position) * (static_cast<float> (velocity) / 127) * feader.get();
 
             return synth_note;
 
@@ -272,8 +341,9 @@ class WaveSynth {
 
             for(u32 i=start; i < end; i++) {
 
-                audio_out_ptr[i] = key->get() * adsr[ADSR_LEVEL];
+                audio_out_ptr[i] = key->get() * controlLevel.get();
                 key->proceed();
+                controlLevel.proceed();
 
             }
 
@@ -295,7 +365,7 @@ class WaveSynth {
             key = new Key(rate);
 
             map = static_cast<LV2_URID_Map*> (nullptr);
-            controlLevel(0.0f);
+            controlLevel = LinearFader(0.0f);
 
             const char *missing = lv2_features_query(
                 features,
@@ -371,6 +441,13 @@ class WaveSynth {
                 if (*adsr_ptr[i] != adsr[i]) {
                     
                     adsr[i] = limit<float>(*adsr_ptr[i], adsrLimit[i].first, adsrLimit[i].second);
+
+                    if (i == ADSR_LEVEL) {
+
+                        controlLevel.set(adsr[i], (0.01 * rate));
+                    
+                    }
+                    
                 
                 }
                 
@@ -394,7 +471,7 @@ class WaveSynth {
 
                         case LV2_MIDI_MSG_NOTE_ON:
                             
-                            key->press(msg[1], msg[2], {adsr[ADSR_ATTACK], adsr[ADSR_DECAY], adsr[ADSR_SUSTAIN], adsr[ADSR_RELEASE]});
+                            key->press(static_cast<Waveform> (adsr[ADSR_WAVEFORM]), msg[1], msg[2], {adsr[ADSR_ATTACK], adsr[ADSR_DECAY], adsr[ADSR_SUSTAIN], adsr[ADSR_RELEASE]});
 
                             break;
 
@@ -408,11 +485,11 @@ class WaveSynth {
 
                             if (msg[1] == LV2_MIDI_CTL_ALL_NOTES_OFF) {
 
-                                key->off();
+                                key->release();
                             
                             }else if(msg[1] == LV2_MIDI_CTL_ALL_NOTES_OFF) {
 
-                                key->off();
+                                key->mute();
 
                             }
                             
