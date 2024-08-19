@@ -34,11 +34,11 @@ class LinearFader {
 
     public:
 
-        LinearFader() {
+        /*LinearFader() {
 
             //pass
 
-        }
+        }*/
 
         LinearFader(const T destination){
 
