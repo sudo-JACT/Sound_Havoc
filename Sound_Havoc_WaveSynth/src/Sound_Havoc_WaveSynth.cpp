@@ -33,14 +33,14 @@ class LinearFader {
         T value_;
 
     public:
+    
+        LinearFader() { 
 
-        /*LinearFader() {
+            //pas
 
-            //pass
+        }
 
-        }*/
-
-        LinearFader(const T destination){
+        LinearFader(const T destination) {
 
             destination_ = destination;
             distance_ = 0;
@@ -62,13 +62,13 @@ class LinearFader {
 
         }
 
-        T get() const{
+        T get() const {
 
             return value_;
 
         }
 
-        void proceed(){
+        void proceed() {
 
             if (distance_ == 0) {
 
@@ -252,7 +252,7 @@ class Key {
             rate = rt;
             freq = pow(2, (static_cast<double> (note) - 69) / 12) * 440;
             time = 0.0f;
-            LinearFader feader(1.0f);
+            feader = LinearFader(1.0f);
             waveform = Waveform(WAVEFORM_SINE);
             minstd_rand rnd(time_t (0));
             uniform_real_distribution<float> dist(-1.0f, 1.0f);
@@ -372,7 +372,7 @@ class WaveSynth {
             key = new Key(rate);
 
             map = static_cast<LV2_URID_Map*> (nullptr);
-            LinearFader controlLevel(0.0f);
+            controlLevel = LinearFader(0.0f);
 
             const char *missing = lv2_features_query(
                 features,
