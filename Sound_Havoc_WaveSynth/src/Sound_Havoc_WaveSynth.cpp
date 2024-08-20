@@ -371,7 +371,7 @@ class WaveSynth {
             position = 0.0;
             key = new Key(rate);
 
-            map = static_cast<LV2_URID_Map*> (nullptr);
+            map = nullptr;
             controlLevel = LinearFader(0.0f);
 
             const char *missing = lv2_features_query(
