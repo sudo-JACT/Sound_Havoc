@@ -371,7 +371,7 @@ class WaveSynth {
             position = 0.0;
             key = new Key(rate);
 
-            map = nullptr;
+            map = nullptr   ;
             controlLevel = LinearFader(0.0f);
 
             const char *missing = lv2_features_query(
@@ -527,7 +527,7 @@ class WaveSynth {
 static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sample_rate, const char *bundle_path, const LV2_Feature *const *features) {
 
 
-    WaveSynth* ws = nullptr;
+    WaveSynth* ws = static_cast<WaveSynth*> (nullptr);
 
     try {
 
