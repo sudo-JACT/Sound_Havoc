@@ -359,7 +359,7 @@ class WaveSynth {
 
     public:
 
-        WaveSynth(const double sample_rate, const LV2_Feature *const *features) {
+        WaveSynth(const double sample_rate, const LV2_Feature* const* features) {
 
             midi_in_ptr = static_cast<const LV2_Atom_Sequence*> (nullptr);
             audio_out_ptr = static_cast<float*> (nullptr);
@@ -524,7 +524,7 @@ class WaveSynth {
 
 /*core methods*/
 //const char *URI
-static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sample_rate, const char *bundle_path, const LV2_Feature *const *features) {
+static LV2_Handle instantiate(const struct LV2_Descriptor* descriptor, double sample_rate, const char* bundle_path, const LV2_Feature* const* features) {
 
 
     WaveSynth* ws = static_cast<WaveSynth*> (nullptr);
