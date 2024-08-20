@@ -3,8 +3,8 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix doap: <http://usefulinc.com/ns/doap#>.
 
-<https://github.com/sudo-JACT/Sound_Havoc/tree/main/Z4τЯΔ/src> a lv2:Plugin , lv2:AmplifierPlugin , doap:Project;
-    lv2:binary <Z4τЯΔ.so>;
+<https://github.com/sudo-JACT/Sound_Havoc/tree/main/Zatra/src> a lv2:Plugin , lv2:AmplifierPlugin , doap:Project;
+    lv2:binary <Zatra.so>;
     doap:name "Z4τЯΔ";
     lv2:optionalFeature lv2:hardRTCapable;
     lv2:minorVersion 1;

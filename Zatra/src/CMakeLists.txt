@@ -1,4 +1,4 @@
-set(PRJ_NAME "Z4τЯΔ")
+set(PRJ_NAME "Zatra")
 project(${PRJ_NAME}_NoUI)
 
 set(PROJECT_BINARY_DIR "${PROJECT_BINARY_DIR}/../${PRJ_NAME}.lv2")
