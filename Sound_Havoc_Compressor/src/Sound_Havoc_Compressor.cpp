@@ -76,7 +76,7 @@ static void run(LV2_Handle instance, uint32_t sample_count) {
 
         if (comp->audio_in_ptr[i] > max) {
 
-            comp->audio_out_ptr[i] = *(comp->comp_ptr);
+            comp->audio_out_ptr[i] = max;
         
         }else {
 
