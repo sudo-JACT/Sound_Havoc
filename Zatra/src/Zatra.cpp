@@ -39,7 +39,7 @@ class Zatra {
 
     private:
 
-        float* ports[PORTS_NR];
+        array<float*, PORTS_NR> ports;
 
         float z7mxyO(u32 index) {
 
