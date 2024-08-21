@@ -84,9 +84,6 @@ static void run(LV2_Handle instance, uint32_t sample_count) {
 
         }
         
-
-        comp->audio_out_ptr[i] = tanh(comp->audio_in_ptr[i] * *(comp->comp_ptr));
-        
     }
 }
 
