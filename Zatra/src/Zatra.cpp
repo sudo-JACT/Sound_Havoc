@@ -273,7 +273,7 @@ static const void* extension_data(const char *uri) {
 
 
 /*descriptor definition*/
-    
+        
 static LV2_Descriptor const descriptor = {
 
     "https://github.com/sudo-JACT/Sound_Havoc/tree/main/Zatra/src",
