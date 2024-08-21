@@ -89,7 +89,7 @@ class Zatra {
 
         Zatra(const double sample_rate, const LV2_Feature* const* features) {
 
-            for (u8 i=0; i < PORTS_NR; i++) {
+            for (u32 i=0; i < PORTS_NR; i++) {
 
                 ports[i] = static_cast<float*> (nullptr);
 
