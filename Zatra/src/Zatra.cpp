@@ -43,14 +43,16 @@ class Z4τЯΔ {
 
         float z7mxyO(u32 index) {
 
-            if (*(ports[Z7mXyO]) == 0) {
+            float tmp = *(ports[Z7mXyO]);
+
+            /*if (tmp == 0) {
 
                 return ports[AUDIO_IN][index];
             
-            }
+            }*/
             
 
-            return 1;
+            return 1.0f;
 
             //ports[AUDIO_IN][i]
 
