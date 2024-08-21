@@ -35,7 +35,7 @@ enum PORTS {
 
 };
 
-class Z4τЯΔ {
+class Zatra {
 
     private:
 
@@ -87,7 +87,7 @@ class Z4τЯΔ {
 
     public:
 
-        Z4τЯΔ(const double sample_rate, const LV2_Feature* const* features) {
+        Zatra(const double sample_rate, const LV2_Feature* const* features) {
 
             for (u8 i=0; i < PORTS_NR; i++) {
 
@@ -180,11 +180,11 @@ class Z4τЯΔ {
 static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sample_rate, const char *bundle_path, const LV2_Feature *const *features) {
 
 
-    Z4τЯΔ* z4 = static_cast<Z4τЯΔ*> (nullptr);
+    Zatra* z4 = static_cast<Zatra*> (nullptr);
 
     try {
 
-        Z4τЯΔ* z4 = new Z4τЯΔ(sample_rate, features);
+        Zatra* z4 = new Zatra(sample_rate, features);
 
     }catch(const bad_alloc& b) {
 
@@ -204,7 +204,7 @@ static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sa
 
 static void connect_port(LV2_Handle instance, uint32_t port, void* data_location) {
 
-    Z4τЯΔ* z4 = static_cast<Z4τЯΔ*> (instance);
+    Zatra* z4 = static_cast<Zatra*> (instance);
 
     if(!z4) {
 
@@ -219,7 +219,7 @@ static void connect_port(LV2_Handle instance, uint32_t port, void* data_location
 
 static void activate(LV2_Handle instance) {
 
-    Z4τЯΔ* z4 = static_cast<Z4τЯΔ*> (instance);
+    Zatra* z4 = static_cast<Zatra*> (instance);
 
     if (!z4) {
 
@@ -234,7 +234,7 @@ static void activate(LV2_Handle instance) {
 
 static void run(LV2_Handle instance, uint32_t sample_count) {
 
-    Z4τЯΔ* z4 = static_cast<Z4τЯΔ*> (instance);
+    Zatra* z4 = static_cast<Zatra*> (instance);
 
     if (!z4) {
 
@@ -254,7 +254,7 @@ static void deactivate(LV2_Handle instance) {
 
 static void cleanup(LV2_Handle instance) {
 
-    Z4τЯΔ* z4 = static_cast<Z4τЯΔ*> (instance);
+    Zatra* z4 = static_cast<Zatra*> (instance);
 
     if (!z4) {
 
@@ -273,10 +273,10 @@ static const void* extension_data(const char *uri) {
 
 
 /*descriptor definition*/
-
+    
 static LV2_Descriptor const descriptor = {
 
-    "https://github.com/sudo-JACT/Sound_Havoc/tree/main/Z4τЯΔ/ src ",
+    "https://github.com/sudo-JACT/Sound_Havoc/tree/main/Zatra/src",
     instantiate,
     connect_port,
     activate,
