@@ -98,7 +98,7 @@ class Zatra {
 
         }
 
-        void connect(u32 port, void* data_location) {
+        void connectPort(u32 port, void* data_location) {
 
             switch (port) {
 
@@ -115,7 +115,7 @@ class Zatra {
                     break;
 
                 case DRIVE:
-                    ports[GAIN] = static_cast<float*> (data_location);
+                    ports[DRIVE] = static_cast<float*> (data_location);
                     break;
 
                 case COMP:
@@ -212,7 +212,7 @@ static void connect_port(LV2_Handle instance, uint32_t port, void* data_location
 
     }
 
-    z4->connect(port, data_location);
+    z4->connectPort(port, data_location);
 
 
 }
@@ -273,7 +273,7 @@ static const void* extension_data(const char *uri) {
 
 
 /*descriptor definition*/
-        
+
 static LV2_Descriptor const descriptor = {
 
     "https://github.com/sudo-JACT/Sound_Havoc/tree/main/Zatra/src",
