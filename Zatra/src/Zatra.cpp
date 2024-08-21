@@ -52,7 +52,7 @@ class Zatra {
             }*/
             
 
-            return 1.0f;
+            return tmp;
 
             //ports[AUDIO_IN][i]
 
@@ -60,7 +60,7 @@ class Zatra {
 
         float comp(u32 index) {
 
-            float max = ports[AUDIO_IN][index] - *(ports[COMP]);
+            float max = ports[AUDIO_IN][index] - (*(ports[COMP]) * 10);
             
             if (ports[AUDIO_IN][index] > max) {
 
@@ -87,7 +87,7 @@ class Zatra {
 
     public:
 
-        Zatra(const double sample_rate, const LV2_Feature* const* features) {
+        Zatra(const double sample_rate) {
 
             for (u32 i=0; i < PORTS_NR; i++) {
 
@@ -184,7 +184,7 @@ static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sa
 
     try {
 
-        Zatra* z4 = new Zatra(sample_rate, features);
+        Zatra* z4 = new Zatra(sample_rate);
 
     }catch(const bad_alloc& b) {
 
