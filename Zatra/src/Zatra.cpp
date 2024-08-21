@@ -184,7 +184,7 @@ static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sa
 
     try {
 
-        Z4τЯΔ *ws = new Z4τЯΔ(sample_rate, features);
+        Z4τЯΔ* z4 = new Z4τЯΔ(sample_rate, features);
 
     }catch(const bad_alloc& b) {
 
