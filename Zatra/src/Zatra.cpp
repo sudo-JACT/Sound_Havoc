@@ -176,7 +176,7 @@ typedef struct {
     float* comp;
     float* z7mxyo;
 
-}Zatra;
+} Zatra;
 
 
 
@@ -332,7 +332,7 @@ static LV2_Descriptor const descriptor = {
 };
 
 /*interface*/
-LV2_Descriptor const *lv2_descriptor(uint32_t index) {
+const LV2_Descriptor *lv2_descriptor(uint32_t index) {
 
     if(index == 0) {
 
