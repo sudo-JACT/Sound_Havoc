@@ -1,10 +1,14 @@
 @prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
+@prefix lv2:  <http://lv2plug.in/ns/lv2core#> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix doap: <http://usefulinc.com/ns/doap#> .
 @prefix units: <http://lv2plug.in/ns/extensions/units#> .
 @prefix pprops: <http://lv2plug.in/ns/ext/port-props#> .
-
+@prefix atom: <http://lv2plug.in/ns/ext/atom#> .
+@prefix midi: <http://lv2plug.in/ns/ext/midi#> .
+@prefix urid: <http://lv2plug.in/ns/ext/urid#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 
 <https://github.com/sudo-JACT>
     a foaf:Person ;
