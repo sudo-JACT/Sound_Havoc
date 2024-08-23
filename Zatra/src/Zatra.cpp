@@ -263,7 +263,7 @@ static void run(LV2_Handle instance, uint32_t sample_count) {
 
     for (u32 i=0; i < sample_count; i++) {
 
-        float tmp = *(z4->z7mxyo);
+        /*float tmp = *(z4->z7mxyo) + z4->audio_in[i];
         float z7mxyO = 1;
 
         float max = z4->audio_in[i] - (*(z4->comp) * 10);
@@ -284,7 +284,9 @@ static void run(LV2_Handle instance, uint32_t sample_count) {
         
         float drive = tanh(comp * *(z4->drive));;
 
-        z4->audio_out[i] = drive * *(z4->gain);
+        z4->audio_out[i] = drive * *(z4->gain);*/
+
+        z4->audio_out[i] = z4->audio_in[i] * *(z4->gain);
             
     }
 
