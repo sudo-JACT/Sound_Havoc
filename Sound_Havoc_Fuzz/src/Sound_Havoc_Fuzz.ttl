@@ -3,7 +3,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#>.
 @prefix doap: <http://usefulinc.com/ns/doap#>.
 
-<https://github.com/sudo-JACT/Sound_Havoc/tree/main/Sound_Havoc_Fuzz/src> a lv2:Plugin , lv2:FuzzPlugin , doap:Project;
+<https://github.com/sudo-JACT/Sound_Havoc/tree/main/Sound_Havoc_Fuzz/src> a lv2:Plugin , lv2:DistortionPlugin , doap:Project;
     lv2:binary <Sound_Havoc_Fuzz.so>;
     doap:name "Sound Havoc Fuzz";
     lv2:optionalFeature lv2:hardRTCapable;
