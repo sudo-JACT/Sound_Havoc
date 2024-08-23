@@ -5,9 +5,17 @@
 @prefix units: <http://lv2plug.in/ns/extensions/units#> .
 @prefix pprops: <http://lv2plug.in/ns/ext/port-props#> .
 
+
+<https://github.com/sudo-JACT>
+    a foaf:Person ;
+    foaf:name "1md0nkey" ;
+    foaf:mbox <mailto:jacopino.toma@gmail.com> ;
+    rdfs:seeAlso <https://github.com/sudo-JACT> .
+
 <https://github.com/sudo-JACT/Sound_Havoc/tree/main/Sound_Havoc_Nois_Generator/src> a lv2:Plugin , lv2:OscillatorPlugin , doap:Project;
     lv2:binary <Sound_Havoc_Nois_Generator.so>;
     doap:name "Sound Havoc Nois Generator";
+    doap:maintainer <https://github.com/sudo-JACT> ;
     lv2:optionalFeature lv2:hardRTCapable;
     lv2:minorVersion 1;
     lv2:microVersion 0;
