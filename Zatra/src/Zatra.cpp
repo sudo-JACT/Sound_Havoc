@@ -23,7 +23,7 @@
 
 using namespace std;
 
-enum PORTS {
+/*enum PORTS {
 
     AUDIO_IN = 0,
     AUDIO_OUT = 1,
@@ -33,7 +33,7 @@ enum PORTS {
     Z7mXyO = 5,
     PORTS_NR = 6,
 
-};
+};*/
 
 /*class Zatra {
 
@@ -204,27 +204,27 @@ static void connect_port(LV2_Handle instance, uint32_t port, void* data_location
 
     switch (port) {
 
-        case AUDIO_IN:
+        case 0:
             z4->audio_in = (float*) data_location;
             break;
 
-        case AUDIO_OUT:
+        case 1:
             z4->audio_out = (float*) data_location;
             break;
 
-        case GAIN:
+        case 2:
             z4->gain = (float*) data_location;
             break;
 
-        case DRIVE:
+        case 3:
             z4->drive = (float*) data_location;
             break;
 
-        case COMP:
+        case 4:
             z4->comp = (float*) data_location;
             break;
 
-        case Z7mXyO:
+        case 5:
             z4->z7mxyo = (float*) data_location;
             break;
 
