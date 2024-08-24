@@ -9,7 +9,7 @@
 #include <random>
 #include <ctime>
 #include <utility>
-#include <new>
+#include <new>  
 
 #define u8 uint8_t
 #define u16 uint16_t
@@ -68,29 +68,6 @@ class Zatra {
             }
 
             return z7mxyO(index) / redu;
-            
-
-
-            /*if (*(ports[COMP]) == 0) {
-
-                return z7mxyO(index);
-            
-            }
-            
-
-            float max = ports[AUDIO_IN][index] - (*(ports[COMP]) * 10);
-
-            if (ports[AUDIO_IN][index] > max) {
-
-                //return max + z7mxyO(index);
-                return max * z7mxyO(index);
-
-            }else {
-
-                //return ports[AUDIO_IN][index] + z7mxyO(index);
-                return ports[AUDIO_IN][index] * z7mxyO(index);
-
-            }*/
 
 
         }

@@ -42,9 +42,19 @@
         [
             a lv2:InputPort , lv2:ControlPort;
             lv2:index 2;
-            lv2:symbol "comp";
-            lv2:name "Compressor";
-            lv2:default 5.0;
+            lv2:symbol "ratio";
+            lv2:name "Ratio";
+            lv2:default 0.0;
             lv2:minimum 0.0;
             lv2:maximum 20.0;
+        ] ,
+
+        [
+            a lv2:InputPort , lv2:ControlPort;
+            lv2:index 3;
+            lv2:symbol "trashold";
+            lv2:name "Trashold";
+            lv2:default 0.0;
+            lv2:minimum -40.0;
+            lv2:maximum 0.0;
         ] .
