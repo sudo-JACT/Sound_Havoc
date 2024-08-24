@@ -531,7 +531,7 @@ static LV2_Handle instantiate(const struct LV2_Descriptor* descriptor, double sa
 
     try {
 
-        WaveSynth *ws = new WaveSynth(sample_rate, features);
+        ws = new WaveSynth(sample_rate, features);
 
     }catch(const bad_alloc& b) {
 
