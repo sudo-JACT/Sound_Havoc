@@ -29,9 +29,10 @@ enum PORTS {
     AUDIO_OUT = 1,
     GAIN = 2,
     DRIVE = 3,
-    COMP = 4,
-    Z7mXyO = 5,
-    PORTS_NR = 6,
+    RATIO = 4,
+    TRASHOLD = 5,
+    Z7mXyO = 6,
+    PORTS_NR = 7,
 
 };
 
@@ -60,8 +61,22 @@ class Zatra {
 
         float comp(u32 index) {
 
+            float level = fabs(z7mxyO(index));
+            float redu = 1.0f;
 
-            if (*(ports[COMP]) == 0) {
+            if (level > *(ports[TRASHOLD])) {
+
+                float e = level - *(ports[TRASHOLD]);
+
+                redu += ((e / *(ports[TRASHOLD])) * (1.0f - (1.0f / *(ports[RATIO]))));
+            
+            }
+
+            return z7mxyO(index) / redu;
+            
+
+
+            /*if (*(ports[COMP]) == 0) {
 
                 return z7mxyO(index);
             
@@ -80,7 +95,7 @@ class Zatra {
                 //return ports[AUDIO_IN][index] + z7mxyO(index);
                 return ports[AUDIO_IN][index] * z7mxyO(index);
 
-            }
+            }*/
 
 
         }
@@ -143,8 +158,12 @@ class Zatra {
                     ports[DRIVE] = static_cast<float*> (data_location);
                     break;
 
-                case COMP:
-                    ports[COMP] = static_cast<float*> (data_location);
+                case RATIO:
+                    ports[RATIO] = static_cast<float*> (data_location);
+                    break;
+
+                case TRASHOLD:
+                    ports[TRASHOLD] = static_cast<float*> (data_location);
                     break;
 
                 case Z7mXyO:
