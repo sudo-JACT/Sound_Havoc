@@ -23,7 +23,7 @@
 
 using namespace std;
 
-/*enum PORTS {
+enum PORTS {
 
     AUDIO_IN = 0,
     AUDIO_OUT = 1,
@@ -33,9 +33,9 @@ using namespace std;
     Z7mXyO = 5,
     PORTS_NR = 6,
 
-};*/
+};
 
-/*class Zatra {
+class Zatra {
 
     private:
 
@@ -45,12 +45,12 @@ using namespace std;
 
             float tmp = *(ports[Z7mXyO]);
 
-            //if (tmp == 0) {
+            /*if (tmp == 0) {
 
-                //return ports[AUDIO_IN][index];
-            
-            //}
-            
+                return ports[AUDIO_IN][index];
+
+            }*/
+
 
             return tmp;
 
@@ -61,19 +61,19 @@ using namespace std;
         float comp(u32 index) {
 
             float max = ports[AUDIO_IN][index] - (*(ports[COMP]) * 10);
-            
+
             if (ports[AUDIO_IN][index] > max) {
 
                 //return max + z7mxyO(index);
                 return max * z7mxyO(index);
-            
+
             }else {
 
                 //return ports[AUDIO_IN][index] + z7mxyO(index);
                 return ports[AUDIO_IN][index] * z7mxyO(index);
 
             }
-            
+
 
         }
 
@@ -94,7 +94,7 @@ using namespace std;
                 ports[i] = static_cast<float*> (nullptr);
 
             }
-            
+
 
         }
 
@@ -103,27 +103,27 @@ using namespace std;
             switch (port) {
 
                 case AUDIO_IN:
-                    ports[AUDIO_IN] = (float*) data_location;
+                    ports[AUDIO_IN] = static_cast<float*> (data_location);
                     break;
 
                 case AUDIO_OUT:
-                    ports[AUDIO_OUT] = (float*) data_location;
+                    ports[AUDIO_OUT] = static_cast<float*> (data_location);
                     break;
 
                 case GAIN:
-                    ports[GAIN] = (float*) data_location;
+                    ports[GAIN] = static_cast<float*> (data_location);
                     break;
 
                 case DRIVE:
-                    ports[DRIVE] = (float*) data_location;
+                    ports[DRIVE] = static_cast<float*> (data_location);
                     break;
 
                 case COMP:
-                    ports[COMP] = (float*) data_location;
+                    ports[COMP] = static_cast<float*> (data_location);
                     break;
 
                 case Z7mXyO:
-                    ports[Z7mXyO] = (float*) data_location;
+                    ports[Z7mXyO] = static_cast<float*> (data_location);
                     break;
 
                 default:
@@ -146,37 +146,30 @@ using namespace std;
                 if (!(ports[i])) {
 
                     return;
-                
+
                 }
-                
+
             }
 
             for (u32 i=0; i < sample_count; i++) {
 
-                //ports[AUDIO_OUT][i] = ports[AUDIO_IN][i] * *(amp->amp_ptr);
-                //dist->audio_out_ptr[i] = tanh(dist->audio_in_ptr[i] * *(dist->dis_ptr));    
+                /*ports[AUDIO_OUT][i] = ports[AUDIO_IN][i] * *(amp->amp_ptr);
+                dist->audio_out_ptr[i] = tanh(dist->audio_in_ptr[i] * *(dist->dis_ptr));    */
 
                 ports[AUDIO_OUT][i] = drive(i) * *(ports[GAIN]);
-            
+
             }
-            
+
 
         }
 };
-*/
 
 
 
-typedef struct {
 
-    float* audio_in;
-    float* audio_out;
-    float* gain;
-    float* drive;
-    float* comp;
-    float* z7mxyo;
 
-} Zatra;
+
+
 
 
 
@@ -186,7 +179,24 @@ typedef struct {
 
 static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sample_rate, const char *bundle_path, const LV2_Feature *const *features) {
 
-    Zatra* z4 = (Zatra*) calloc(1, sizeof(Zatra));
+
+    Zatra* z4 = static_cast<Zatra*> (nullptr);
+
+    try {
+
+        Zatra* z4 = new Zatra(sample_rate);
+
+    }catch(const bad_alloc& b) {
+
+        cerr << "Error while allocating memory" << endl;
+        return nullptr;
+
+    }catch(const exception& e) {
+
+        cerr << e.what() << endl;
+        return nullptr;
+
+    }
 
     return z4;
 
@@ -194,7 +204,7 @@ static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sa
 
 static void connect_port(LV2_Handle instance, uint32_t port, void* data_location) {
 
-    Zatra* z4 = (Zatra*) instance;
+    Zatra* z4 = static_cast<Zatra*> (instance);
 
     if(!z4) {
 
@@ -202,93 +212,37 @@ static void connect_port(LV2_Handle instance, uint32_t port, void* data_location
 
     }
 
-    switch (port) {
-
-        case 0:
-            z4->audio_in = (float*) data_location;
-            break;
-
-        case 1:
-            z4->audio_out = (float*) data_location;
-            break;
-
-        case 2:
-            z4->gain = (float*) data_location;
-            break;
-
-        case 3:
-            z4->drive = (float*) data_location;
-            break;
-
-        case 4:
-            z4->comp = (float*) data_location;
-            break;
-
-        case 5:
-            z4->z7mxyo = (float*) data_location;
-            break;
-
-        default:
-            break;
-
-    }
+    z4->connectPort(port, data_location);
 
 
 }
 
 static void activate(LV2_Handle instance) {
 
-    /*Zatra* z4 = static_cast<Zatra*> (instance);
+    Zatra* z4 = static_cast<Zatra*> (instance);
 
     if (!z4) {
 
         return;
-    
+
     }
 
-    z4->activate();*/
-    
+    z4->activate();
+
 
 }
 
 static void run(LV2_Handle instance, uint32_t sample_count) {
 
-    Zatra* z4 = (Zatra*) instance;
+    Zatra* z4 = static_cast<Zatra*> (instance);
 
-    if ((!z4) || (!z4->audio_in) || (!z4->audio_out) || (!z4->gain) || (!z4->drive) || (!z4->comp) || (!z4->z7mxyo)) {
+    if (!z4) {
 
         return;
-    
+
     }
 
-    for (u32 i=0; i < sample_count; i++) {
-
-        /*float tmp = *(z4->z7mxyo) + z4->audio_in[i];
-        float z7mxyO = 1;
-
-        float max = z4->audio_in[i] - (*(z4->comp) * 10);
-        float comp = 1;
-
-        if (z4->audio_in[i] > max) {
-
-            //return max + z7mxyO(index);
-            comp = max * z7mxyO;
-            
-        }else {
-
-            //return ports[AUDIO_IN][index] + z7mxyO(index);
-            comp = z4->audio_in[i] * z7mxyO;
-
-        }
-
-        
-        float drive = tanh(comp * *(z4->drive));;
-
-        z4->audio_out[i] = drive * *(z4->gain);*/
-
-        z4->audio_out[i] = z4->audio_in[i] * *(z4->gain);
-            
-    }
+    z4->run(sample_count);
 
 }
 
@@ -300,7 +254,7 @@ static void deactivate(LV2_Handle instance) {
 
 static void cleanup(LV2_Handle instance) {
 
-    Zatra* z4 = (Zatra*) instance;
+    Zatra* z4 = static_cast<Zatra*> (instance);
 
     if (!z4) {
 
@@ -308,7 +262,7 @@ static void cleanup(LV2_Handle instance) {
 
     }
 
-    free(z4);
+    delete z4;
 }
 
 static const void* extension_data(const char *uri) {
@@ -334,7 +288,7 @@ static LV2_Descriptor const descriptor = {
 };
 
 /*interface*/
-const LV2_Descriptor *lv2_descriptor(uint32_t index) {
+LV2_Descriptor const *lv2_descriptor(uint32_t index) {
 
     if(index == 0) {
 
