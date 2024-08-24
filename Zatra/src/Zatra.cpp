@@ -52,13 +52,21 @@ class Zatra {
             }*/
 
 
-            return tmp;
+            return 1.0f;
 
             //ports[AUDIO_IN][i]
 
         }
 
         float comp(u32 index) {
+
+
+            if (*(ports[COMP]) == 0) {
+
+                return z7mxyO(index);
+            
+            }
+            
 
             float max = ports[AUDIO_IN][index] - (*(ports[COMP]) * 10);
 
@@ -79,7 +87,24 @@ class Zatra {
 
         float drive(u32 index) {
 
-            return tanh(comp(index) * *(ports[DRIVE]));
+            if (*(ports[DRIVE]) == 0) {
+
+                float t = tanh(comp(index));
+
+                if (t == 0) {
+
+                    return 1.0f;
+
+                }
+
+                return t;
+            
+            }else {
+
+                return tanh(comp(index) * *(ports[DRIVE]));
+
+            }
+            
 
         }
 
@@ -156,7 +181,17 @@ class Zatra {
                 /*ports[AUDIO_OUT][i] = ports[AUDIO_IN][i] * *(amp->amp_ptr);
                 dist->audio_out_ptr[i] = tanh(dist->audio_in_ptr[i] * *(dist->dis_ptr));    */
 
-                ports[AUDIO_OUT][i] = drive(i) * *(ports[GAIN]);
+                if (*(ports[GAIN]) == 0) {
+
+                    ports[AUDIO_OUT][i] = drive(i);
+                
+                }else {
+
+                    ports[AUDIO_OUT][i] = drive(i) * *(ports[GAIN]);
+
+                }
+                
+
 
             }
 
