@@ -14,7 +14,7 @@ typedef struct {
     float* audio_in_ptr;
     float* audio_out_ptr;
     float* ratio_ptr;
-    float* trashold_ptr;
+    float* threshold_ptr;
 
 } Sound_Havoc_Compressor;
 
@@ -51,7 +51,7 @@ static void connect_port(LV2_Handle instance, uint32_t port, void* data_location
             break;
 
         case 3:
-            comp->trashold_ptr = (float*) data_location;
+            comp->threshold_ptr = (float*) data_location;
             break;
 
         default:
@@ -70,7 +70,7 @@ static void run(LV2_Handle instance, uint32_t sample_count) {
 
     float max;
 
-    if ((!comp) || (!comp->audio_in_ptr) || (!comp->audio_out_ptr) || (!comp->ratio_ptr) || (comp->trashold_ptr)) {
+    if ((!comp) || (!comp->audio_in_ptr) || (!comp->audio_out_ptr) || (!comp->ratio_ptr) || (comp->threshold_ptr)) {
 
         return;
     }
@@ -81,11 +81,11 @@ static void run(LV2_Handle instance, uint32_t sample_count) {
         float level = comp->audio_in_ptr[i];
         float redu = 1.0f;
 
-        if (level > *(comp->trashold_ptr)) {
+        if (level > *(comp->threshold_ptr)) {
 
-            float e = level - *(comp->trashold_ptr);
+            float e = level - *(comp->threshold_ptr);
 
-            redu += ((e / *(comp->trashold_ptr)) * (1.0f - (1.0f / *(comp->ratio_ptr))));
+            redu += ((e / *(comp->threshold_ptr)) * (1.0f - (1.0f / *(comp->ratio_ptr))));
             
         }
 

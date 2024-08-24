@@ -10,6 +10,7 @@
 #include <ctime>
 #include <utility>
 #include <new>  
+#include "../ALGORITHMS/src/algorithms.hpp"
 
 #define u8 uint8_t
 #define u16 uint16_t
@@ -25,7 +26,7 @@ enum PORTS {
     GAIN = 2,
     DRIVE = 3,
     RATIO = 4,
-    TRASHOLD = 5,
+    THRESHOLD = 5,
     Z7mXyO = 6,
     PORTS_NR = 7,
 
@@ -56,42 +57,13 @@ class Zatra {
 
         float comp(u32 index) {
 
-            float level = fabs(z7mxyO(index));
-            float redu = 1.0f;
-
-            if (level > *(ports[TRASHOLD])) {
-
-                float e = level - *(ports[TRASHOLD]);
-
-                redu += ((e / *(ports[TRASHOLD])) * (1.0f - (1.0f / *(ports[RATIO]))));
-            
-            }
-
-            return z7mxyO(index) / redu;
-
+            return comp_1(z7mxyO(index), *(ports[RATIO]), *(ports[THRESHOLD]));
 
         }
 
         float drive(u32 index) {
 
-            if (*(ports[DRIVE]) == 0) {
-
-                float t = tanh(comp(index));
-
-                if (t == 0) {
-
-                    return 1.0f;
-
-                }
-
-                return t;
-            
-            }else {
-
-                return tanh(comp(index) * *(ports[DRIVE]));
-
-            }
-            
+            return tanh_drive(comp(index), *(ports[DRIVE]));
 
         }
 
@@ -134,8 +106,8 @@ class Zatra {
                     ports[RATIO] = static_cast<float*> (data_location);
                     break;
 
-                case TRASHOLD:
-                    ports[TRASHOLD] = static_cast<float*> (data_location);
+                case THRESHOLD:
+                    ports[THRESHOLD] = static_cast<float*> (data_location);
                     break;
 
                 case Z7mXyO:
@@ -178,7 +150,7 @@ class Zatra {
                 
                 }else {
 
-                    ports[AUDIO_OUT][i] = drive(i) * *(ports[GAIN]);
+                    ports[AUDIO_OUT][i] = gain_1(drive(i), *(ports[GAIN]));
 
                 }
                 
