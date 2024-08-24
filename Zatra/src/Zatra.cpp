@@ -184,7 +184,7 @@ static LV2_Handle instantiate(const struct LV2_Descriptor *descriptor, double sa
 
     try {
 
-            z4 = new Zatra(sample_rate);
+        z4 = new Zatra(sample_rate);
 
     }catch(const bad_alloc& b) {
 
