@@ -10,11 +10,6 @@
 #include <ctime>
 #include <utility>
 #include <new>
-#include <lv2/atom/atom.h>
-#include <lv2/atom/util.h>
-#include <lv2/urid/urid.h>
-#include <lv2/midi/midi.h>
-#include <lv2/core/lv2_util.h>
 
 #define u8 uint8_t
 #define u16 uint16_t
