@@ -10,7 +10,7 @@
 #include <ctime>
 #include <utility>
 #include <new>  
-#include "../ALGORITHMS/src/algorithms.hpp"
+#include "../../ALGORITHMS/src/algorithms.hpp"
 
 #define u8 uint8_t
 #define u16 uint16_t
