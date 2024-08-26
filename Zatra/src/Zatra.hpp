@@ -49,7 +49,7 @@ class Zatra {
             
             }
             
-            return 1.0f;
+            return ports[AUDIO_IN][index];
 
         }
 
