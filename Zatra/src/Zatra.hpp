@@ -2,11 +2,9 @@
 #include <cstddef>
 #include <cstdint>
 #include <cstdlib>
-#include <cmath>
 #include <lv2.h>
 #include <array>
 #include <stdexcept>
-#include <random>
 #include <ctime>
 #include <utility>
 #include <new>  
@@ -45,7 +43,7 @@ class Zatra {
             int tmp = round(*(ports[Z7mXyO]));
             int b = rand()%tmp+1;
 
-            return (ports[AUDIO_IN][index] * z7mxyO_1(tmp, b));
+            return (ports[AUDIO_IN][index] + z7mxyO_1(tmp, b));
 
         }
 
