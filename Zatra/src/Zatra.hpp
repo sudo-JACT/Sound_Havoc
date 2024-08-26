@@ -38,12 +38,18 @@ class Zatra {
 
         float z7mxyO(u32 index) {
 
-            srand((unsigned) time(NULL));
+            if (*(ports[Z7mXyO]) != 0) {
 
-            int tmp = static_cast<int> (*(ports[Z7mXyO]));
-            int b = rand()%tmp+1;
+                srand((unsigned) time(NULL));
 
-            return z7mxyO_1(ports[AUDIO_IN][index], tmp, b);
+                int tmp = static_cast<int> (*(ports[Z7mXyO]));
+                int b = rand()%tmp+1;
+
+                return z7mxyO_1(ports[AUDIO_IN][index], tmp, b);
+            
+            }
+            
+            return 1.0f;
 
         }
 
