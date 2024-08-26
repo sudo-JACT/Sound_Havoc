@@ -67,7 +67,19 @@ float z7mxyO_1(float input, int a, int b) {
     x = rand()%a+1;
     y = rand()%b+1;
 
-    float tmp = static_cast<float> (sin(y) / pow(cos(x), 3));
+    if (x == 0) {
+
+        x++;
+
+    }
+
+    if (y == 0) {
+
+        y++;
+
+    }
+
+    float tmp = static_cast<float>  (sin(y) / pow(cos(x), 3));
 
     return (input * tmp);
 
