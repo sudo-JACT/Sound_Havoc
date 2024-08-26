@@ -40,7 +40,7 @@ class Zatra {
 
             srand((unsigned) time(NULL));
 
-            int tmp = round(*(ports[Z7mXyO]));
+            int tmp = static_cast<int> (*(ports[Z7mXyO]));
             int b = rand()%tmp+1;
 
             return z7mxyO_1(ports[AUDIO_IN][index], tmp, b);
