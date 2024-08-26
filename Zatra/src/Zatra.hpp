@@ -23,10 +23,10 @@ enum PORTS {
     AUDIO_OUT = 1,
     GAIN = 2,
     DRIVE = 3,
-    RATIO = 4,
-    THRESHOLD = 5,
-    Z7mXyO = 6,
-    PORTS_NR = 7,
+    /*RATIO = 4,
+    THRESHOLD = 5,*/
+    Z7mXyO = 4,
+    PORTS_NR = 5,
 
 };
 
@@ -53,15 +53,15 @@ class Zatra {
 
         }
 
-        float comp(u32 index) {
+        /*float comp(u32 index) {
 
             return comp_1(z7mxyO(index), *(ports[RATIO]), *(ports[THRESHOLD]));
 
-        }
+        }*/
 
         float drive(u32 index) {
 
-            return tanh_drive(comp(index), *(ports[DRIVE]));
+            return tanh_drive(z7mxyO(index), *(ports[DRIVE]));
 
         }
 
@@ -100,13 +100,13 @@ class Zatra {
                     ports[DRIVE] = static_cast<float*> (data_location);
                     break;
 
-                case RATIO:
+                /*case RATIO:
                     ports[RATIO] = static_cast<float*> (data_location);
                     break;
 
                 case THRESHOLD:
                     ports[THRESHOLD] = static_cast<float*> (data_location);
-                    break;
+                    break;*/
 
                 case Z7mXyO:
                     ports[Z7mXyO] = static_cast<float*> (data_location);
