@@ -20,13 +20,14 @@ using namespace std;
 enum PORTS {
 
     AUDIO_IN = 0,
-    AUDIO_OUT = 1,
-    GAIN = 2,
-    DRIVE = 3,
+    AUDIO_OUT_RIGHT = 1,
+    AUDIO_OUT_LEFT = 2,
+    GAIN = 3,
+    DRIVE = 4,
     /*RATIO = 4,
     THRESHOLD = 5,*/
-    Z7mXyO = 4,
-    PORTS_NR = 5,
+    Z7mXyO = 5,
+    PORTS_NR = 6,
 
 };
 
@@ -88,8 +89,12 @@ class Zatra {
                     ports[AUDIO_IN] = static_cast<float*> (data_location);
                     break;
 
-                case AUDIO_OUT:
-                    ports[AUDIO_OUT] = static_cast<float*> (data_location);
+                case AUDIO_OUT_RIGHT:
+                    ports[AUDIO_OUT_RIGHT] = static_cast<float*> (data_location);
+                    break;
+
+                case AUDIO_OUT_LEFT:
+                    ports[AUDIO_OUT_LEFT] = static_cast<float*> (data_location);
                     break;
 
                 case GAIN:
@@ -139,16 +144,34 @@ class Zatra {
 
             for (u32 i=0; i < sample_count; i++) {
 
-                /*ports[AUDIO_OUT][i] = ports[AUDIO_IN][i] * *(amp->amp_ptr);
-                dist->audio_out_ptr[i] = tanh(dist->audio_in_ptr[i] * *(dist->dis_ptr));    */
+                srand((unsigned) time(NULL));
+
+                int p = rand()%2;
 
                 if (*(ports[GAIN]) == 0) {
 
-                    ports[AUDIO_OUT][i] = drive(i);
+                    if (p == 0) {
+
+                        ports[AUDIO_OUT_LEFT][i] = drive(i);
+                    
+                    }else {
+
+                        ports[AUDIO_OUT_RIGHT][i] = drive(i);
+
+                    }
+                    
                 
                 }else {
 
-                    ports[AUDIO_OUT][i] = gain_1(drive(i), *(ports[GAIN]));
+                    if (p == 0) {
+
+                        ports[AUDIO_OUT_LEFT][i] = gain_1(drive(i), *(ports[GAIN]));
+                    
+                    }else {
+
+                        ports[AUDIO_OUT_RIGHT][i] = gain_1(drive(i), *(ports[GAIN]));
+
+                    }
 
                 }
                 
