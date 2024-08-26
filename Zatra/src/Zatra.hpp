@@ -40,6 +40,8 @@ class Zatra {
 
         float z7mxyO(u32 index) {
 
+            srand((unsigned) time(NULL));
+
             int tmp = round(*(ports[Z7mXyO]));
             int b = rand()%tmp+1;
 
