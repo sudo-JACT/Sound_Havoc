@@ -58,7 +58,7 @@ float tanh_drive(float input, float d) {
 }
 
 
-float z7mxyO_1(int a, int b) { 
+float z7mxyO_1(float input, int a, int b) { 
 
     int x, y;
 
@@ -69,6 +69,6 @@ float z7mxyO_1(int a, int b) {
 
     float tmp = (float) (sin(y) / pow(cos(x), 3));
 
-    return tmp;
+    return (input * tmp);
 
 }   
