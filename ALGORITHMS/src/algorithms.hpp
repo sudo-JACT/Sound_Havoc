@@ -1,4 +1,5 @@
 #include <cmath>
+#include <random>
 
 #define u8 uint8_t
 #define u16 uint16_t
@@ -53,5 +54,19 @@ float tanh_drive(float input, float d) {
         return tanh(input * d);
 
     }
+
+}
+
+
+float z7mxyO_1(float input, int a, int b) { 
+
+    int x, y;
+
+    srand((unsigned) time(NULL));
+
+    x = rand()%a+1;
+    y = rand()%b+1;
+
+    return ((input * sin(y)) / cos(x));
 
 }

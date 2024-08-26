@@ -40,18 +40,10 @@ class Zatra {
 
         float z7mxyO(u32 index) {
 
-            float tmp = *(ports[Z7mXyO]);
+            int tmp = *(ports[Z7mXyO]);
+            int b = rand()%tmp+1;
 
-            /*if (tmp == 0) {
-
-                return ports[AUDIO_IN][index];
-
-            }*/
-
-
-            return 1.0f;
-
-            //ports[AUDIO_IN][i]
+            return z7mxyO_1(ports[AUDIO_IN][index], tmp, b);
 
         }
 
