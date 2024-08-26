@@ -43,7 +43,7 @@ class Zatra {
             int tmp = round(*(ports[Z7mXyO]));
             int b = rand()%tmp+1;
 
-            return z7mxyO_1(ports[AUDIO_IN][index], tmp, b);
+            return (ports[AUDIO_IN][index] * z7mxyO_1(ports[AUDIO_IN][index], tmp, b));
 
         }
 
