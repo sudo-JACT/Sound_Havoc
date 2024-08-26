@@ -67,6 +67,8 @@ float z7mxyO_1(int a, int b) {
     x = rand()%a+1;
     y = rand()%b+1;
 
-    return (sin(y) / pow(cos(x), 3));
+    float tmp = (float) (sin(y) / pow(cos(x), 3));
 
-}
+    return tmp;
+
+}   
